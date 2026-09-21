@@ -1,0 +1,3 @@
+export function BookingOption({ selected, title, description, meta, onClick }: { selected: boolean; title: string; description?: string; meta?: string; onClick: () => void }) {
+  return <button type="button" onClick={onClick} className={`w-full rounded-[1.25rem] border p-4 text-left transition-colors ${selected ? "border-orange bg-orange/10" : "border-ink/15 bg-white/25 hover:border-orange/60"}`}><div className="flex items-start justify-between gap-4"><span><strong className="block text-sm">{title}</strong>{description && <span className="mt-1 block text-xs leading-relaxed text-ink/55">{description}</span>}</span>{meta && <span className="shrink-0 text-xs font-bold text-orange">{meta}</span>}</div></button>;
+}

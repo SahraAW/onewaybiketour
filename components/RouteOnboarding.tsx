@@ -86,7 +86,7 @@ export function RouteOnboarding() {
           <div className="space-y-2">
             {question.options.map((option) => <button key={option} onClick={() => chooseAnswer(option)} className={`route-option ${answers[step] === option ? "route-option-active" : ""}`}><span className="mr-2 inline-block h-2 w-2 rounded-full border border-ink/70" />{option}</button>)}
           </div>
-          <button className="mt-7 block ml-auto text-[10px] text-ink/70">Skip <span className="ml-1">›</span></button>
+          <button type="button" onClick={() => setStep(step + 1)} className="mt-7 block ml-auto text-[10px] text-ink/70">Skip <span className="ml-1">›</span></button>
         </div>
         <div className="flex items-center justify-between text-[10px] text-orange"><button onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; back</button><button className="rounded-full bg-orange px-7 py-2 text-white" onClick={() => setStep(step + 1)}>Continue</button></div>
         <div className="mt-14"><MiniRoute /></div>
@@ -95,7 +95,7 @@ export function RouteOnboarding() {
         <RouteMark />
         <div className="flex-1">
           <h2 className="max-w-[190px] text-xl font-bold leading-tight tracking-[-.04em]">{route.city}</h2>
-          <div className="route-photo mt-3" style={{ backgroundImage: `url("${route.image}")` }} role="img" aria-label={`${route.city} cycling route`}><button className="absolute left-[-17px] top-1/2 text-orange" aria-label="Previous image">‹</button><button className="absolute right-[-17px] top-1/2 text-orange" aria-label="Next image">›</button></div>
+          <button type="button" onClick={() => setSelected(route.city)} className="route-photo mt-3 block w-full text-left" style={{ backgroundImage: `url("${route.image}")` }} aria-label={`Choose ${route.city} cycling route`}><span className="absolute left-[-17px] top-1/2 text-orange" aria-hidden="true">‹</span><span className="absolute right-[-17px] top-1/2 text-orange" aria-hidden="true">›</span></button>
           <p className="mt-2 text-[8px] text-orange">{route.caption}</p>
           <button onClick={() => setStep(questions.length - 1)} className="mt-5 text-[10px] text-orange">‹&nbsp; back</button>
         </div>
