@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #e8e5e2;
+  --ink: #252525;
+  --orange: #f45112;
+  --muted: #77736f;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+html, body { overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .15;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.display { letter-spacing: -.075em; line-height: .84; }
+.eyebrow { letter-spacing: .12em; text-transform: uppercase; font-size: 10px; }
+.orange-line { color: var(--orange); }
+.route-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: route-draw 2.5s ease-in-out forwards;
+}
+@keyframes route-draw { to { stroke-dashoffset: 0; } }
+.route-panel {
+  position: relative;
+  overflow: hidden;
+  background: #dcdcdc;
+  min-width: 0;
+}
+.route-card-footer {
+  position: relative;
+  background: #dcdcdc;
+}
+.route-card-footer::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 26px;
+  background: linear-gradient(90deg, #5a5a5a, #d7d7d7 45%, #686868);
+  opacity: .55;
+  filter: grayscale(1);
+}
+.route-option {
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(37,37,37,.65);
+  border-radius: 999px;
+  padding: 5px 10px;
+  text-align: left;
+  font-size: 9px;
+  transition: background-color .2s, border-color .2s;
+}
+.route-option:hover, .route-option-active { border-color: var(--orange); background: rgba(244,81,18,.08); }
+.route-photo {
+  position: relative;
+  height: clamp(210px, 30vw, 300px);
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+}
+.route-card-footer svg {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .display { letter-spacing: -.065em; }
+  .route-flow > div { grid-template-columns: 1fr; }
+  .route-flow > header { padding-inline: 16px; }
+  .route-flow > div { padding-inline: 12px; }
+  .route-panel { min-height: min(620px, calc(100svh - 92px)); }
+  .route-panel.flex { padding-inline: clamp(20px, 7vw, 32px); }
+  .route-card-footer { margin-inline: calc(clamp(20px, 7vw, 32px) * -1) !important; padding-inline: clamp(20px, 7vw, 32px); }
+  .route-option { min-height: 34px; padding: 7px 12px; font-size: 10px; }
+  .route-photo { height: min(58svh, 360px); min-height: 220px; }
+  .route-flow .route-panel.flex.pt-24 { padding-top: 76px; }
+  .route-flow .route-panel.flex.pt-28 { padding-top: 76px; }
+  .route-flow .route-panel.flex.pb-7 { padding-bottom: 24px; }
+  .route-flow .route-panel.flex .mt-14 { margin-top: 36px; }
+  .route-flow .route-card-footer { margin-top: 28px !important; padding-bottom: 34px; }
+  .route-flow .route-card-footer svg { max-height: 80px; }
+  .route-flow .route-panel + .route-panel { margin-top: 0; }
+  .route-flow .route-panel h2 { font-size: clamp(1.35rem, 7vw, 2rem); }
+  .route-flow .route-panel > div.flex-1 { min-height: 0; }
+  .route-flow .route-panel .absolute { max-width: calc(100% - 30px); }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .route-flow > div { grid-template-columns: minmax(300px, 420px); justify-content: center; }
+  .route-flow > div:has(.route-photo) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .route-flow .route-panel { min-height: 600px; }
+}
+
+@media (min-width: 1025px) {
+  .route-flow > div:has(.route-photo) { padding-inline: 20px; }
+  .route-flow .route-panel { min-height: clamp(560px, 72vh, 700px); }
+  .route-flow .route-panel.flex { padding-inline: clamp(28px, 3vw, 48px); }
+  .route-flow .route-card-footer { margin-inline: calc(clamp(28px, 3vw, 48px) * -1) !important; padding-inline: clamp(28px, 3vw, 48px); }
+}
