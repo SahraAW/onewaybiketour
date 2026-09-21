@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
+import mobileLogo from "@/app/onboarding/Skærmbillede_2026-09-21_100841-removebg-preview.png";
+import desktopLogo from "@/app/onboarding/Skærmbillede_2026-09-21_214524-removebg-preview.png";
 
 export function LogoMark({ className = "" }: { className?: string }) {
   return <svg viewBox="0 0 104 46" className={className} role="img" aria-label="One way logo mark">
@@ -8,8 +11,9 @@ export function LogoMark({ className = "" }: { className?: string }) {
   </svg>;
 }
 
-export function Logo({ light = false }: { light?: boolean }) {
-  return <Link href="/" className={`flex items-center gap-2 text-lg font-bold tracking-[-.07em] ${light ? "text-white" : ""}`} aria-label="One way bike tours home">
-    <span>One way</span><LogoMark className="h-5 w-11 text-orange" />
+export function Logo({ light = false }: Readonly<{ light?: boolean }>) {
+  return <Link href="/" className={light ? "brightness-0 invert" : ""} aria-label="One way bike tours home">
+    <Image src={mobileLogo} alt="One way" className="h-8 w-auto lg:hidden" priority />
+    <Image src={desktopLogo} alt="One way" className="hidden h-8 w-auto lg:block" priority />
   </Link>;
 }

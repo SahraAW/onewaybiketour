@@ -11,10 +11,15 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/tours/page": [
+    "/onboarding/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/tours/page.js"
+      "static/chunks/app/onboarding/page.js"
+    ],
+    "/recommendations/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/recommendations/page.js"
     ],
     "/tours/[id]/page": [
       "static/chunks/webpack.js",
@@ -31,15 +36,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/booking/date/page.js"
     ],
+    "/tours/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/tours/page.js"
+    ],
     "/booking/bike/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/booking/bike/page.js"
     ],
-    "/booking/size/page": [
+    "/bike/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/booking/size/page.js"
+      "static/chunks/app/bike/[id]/page.js"
     ],
     "/booking/extras/page": [
       "static/chunks/webpack.js",
@@ -60,31 +70,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/confirmation/page.js"
-    ],
-    "/login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/login/page.js"
-    ],
-    "/register/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/register/page.js"
-    ],
-    "/onboarding/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/onboarding/page.js"
-    ],
-    "/recommendations/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/recommendations/page.js"
-    ],
-    "/bike/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/bike/[id]/page.js"
     ]
   }
 }

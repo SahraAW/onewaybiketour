@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --paper: #e8e5e2;
-  --ink: #252525;
-  --orange: #f45112;
-  --muted: #77736f;
+  --paper: #d9d9d9;
+  --ink: #202020;
+  --orange: #f55a00;
+  --muted: #626262;
 }
 
 * { box-sizing: border-box; }
@@ -16,28 +18,21 @@ body {
   min-width: 320px;
   background: var(--paper);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 html, body { overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
+button { cursor: pointer; }
+input, textarea, select { color: var(--ink); }
+input::placeholder { color: rgba(32, 32, 32, .42); }
 
 .grain {
   position: relative;
   isolation: isolate;
 }
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  opacity: .15;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-.display { letter-spacing: -.075em; line-height: .84; }
+.display { letter-spacing: -.035em; line-height: .98; }
 .eyebrow { letter-spacing: .12em; text-transform: uppercase; font-size: 10px; }
 .orange-line { color: var(--orange); }
 .route-draw {
@@ -80,14 +75,14 @@ button, input { font: inherit; }
 .route-option {
   display: block;
   width: 100%;
-  border: 1px solid rgba(37,37,37,.65);
-  border-radius: 999px;
-  padding: 5px 10px;
+  border: 1px solid rgba(32,32,32,.28);
+  border-radius: 10px;
+  padding: 8px 12px;
   text-align: left;
   font-size: 9px;
   transition: background-color .2s, border-color .2s;
 }
-.route-option:hover, .route-option-active { border-color: var(--orange); background: rgba(244,81,18,.08); }
+.route-option:hover, .route-option-active { border-color: var(--orange); background: rgba(245,90,0,.08); }
 .route-option:focus-visible,
 .route-photo:focus-visible,
 .route-panel button:focus-visible {
@@ -127,7 +122,7 @@ button, input { font: inherit; }
   flex: 0 0 auto;
   place-items: center;
   border: 1.5px solid var(--ink);
-  border-radius: 999px;
+  border-radius: 10px;
   font-size: 2.25rem;
   font-weight: 300;
   line-height: 1;
@@ -179,13 +174,13 @@ button, input { font: inherit; }
   margin-inline: auto;
   place-items: center;
   border: 0;
-  border-radius: 999px;
+  border-radius: 10px;
   color: var(--ink);
   font-size: clamp(.9rem, 2.5vw, 1.1rem);
   transition: transform .2s, background-color .2s, color .2s;
 }
 .calendar-day-premium { background: var(--orange); color: white; }
-.calendar-day-value { background: #ffe477; }
+.calendar-day-value { background: rgba(245,90,0,.2); }
 .calendar-day-standard { background: transparent; }
 .calendar-day:not(:disabled):hover { transform: translateY(-2px); }
 .calendar-day-selected { outline: 2px solid var(--ink); outline-offset: 3px; }
@@ -194,7 +189,7 @@ button, input { font: inherit; }
 .calendar-legend span { display: inline-flex; align-items: center; gap: .4rem; }
 .calendar-dot { display: inline-block; width: .65rem; height: .65rem; border-radius: 999px; }
 .calendar-dot-premium { background: var(--orange); }
-.calendar-dot-value { background: #ffe477; }
+.calendar-dot-value { background: rgba(245,90,0,.2); }
 .calendar-dot-standard { border: 1px solid var(--ink); }
 .booking-progress {
   display: grid;
@@ -231,9 +226,10 @@ button, input { font: inherit; }
 .booking-progress-upcoming { color: rgba(37, 37, 37, .35); }
 .booking-progress-complete:hover { color: var(--ink); }
 .bike-carousel { width: 100%; touch-action: pan-y; }
+.bike-slide:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
 .bike-carousel-stage { position: relative; display: flex; align-items: center; gap: clamp(.5rem, 2vw, 1.5rem); }
-.bike-slide { display: grid; width: 100%; overflow: hidden; border: 1px solid rgba(37,37,37,.15); border-radius: 1.75rem; background: rgba(255,255,255,.28); text-align: left; transition: border-color .2s, transform .2s, box-shadow .2s; }
-.bike-slide:hover { border-color: var(--orange); box-shadow: 0 1rem 3rem rgba(37,37,37,.08); transform: translateY(-2px); }
+.bike-slide { display: grid; width: 100%; overflow: hidden; border: 1px solid rgba(32,32,32,.16); border-radius: 16px; background: rgba(255,255,255,.3); text-align: left; transition: border-color .2s, transform .2s; }
+.bike-slide:hover { border-color: var(--orange); transform: translateY(-2px); }
 .bike-slide-image { min-height: clamp(15rem, 38vw, 26rem); background-position: center; background-size: cover; }
 .bike-slide-copy { display: grid; gap: .65rem; padding: clamp(1rem, 3vw, 2rem); }
 .bike-slide-copy h2 { font-size: clamp(1.7rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.06em; }
@@ -245,14 +241,28 @@ button, input { font: inherit; }
 .bike-carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.3); transition: width .2s, background-color .2s; }
 .bike-carousel-dots button.active { width: 1.6rem; background: var(--orange); }
 .bike-detail-image { min-height: clamp(16rem, 42vw, 34rem); border-radius: 1.75rem; background-position: center; background-size: cover; }
-.bike-size { min-width: 3.5rem; border: 1px solid rgba(37,37,37,.5); border-radius: 999px; padding: .6rem 1rem; font-size: .75rem; transition: border-color .2s, background-color .2s; }
-.bike-size.selected, .bike-size:hover { border-color: var(--orange); background: rgba(244,81,18,.1); }
+.bike-size { min-width: 3.5rem; border: 1px solid rgba(32,32,32,.35); border-radius: 10px; padding: .6rem 1rem; font-size: .75rem; transition: border-color .2s, background-color .2s; }
+.bike-size.selected, .bike-size:hover { border-color: var(--orange); background: rgba(245,90,0,.1); }
 .tour-carousel { width: 100%; touch-action: pan-y; }
 .carousel-arrow { display: grid; width: 2.8rem; aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 1px solid var(--ink); border-radius: 999px; font-size: 1.8rem; line-height: 1; transition: background-color .2s, color .2s; }
 .carousel-arrow:hover, .carousel-arrow:focus-visible { border-color: var(--orange); background: var(--orange); color: white; }
 .carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
 .carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.25); transition: width .2s, background-color .2s; }
 .carousel-dots button.active { width: 1.6rem; background: var(--orange); }
+.booking-summary { min-width: 0; }
+
+/* Keep legacy page utility colors aligned with the new design tokens. */
+.bg-\[\#dedad6\] { background-color: var(--paper) !important; }
+.bg-\[\#dedad6\]\/50 { background-color: rgba(217, 217, 217, .5) !important; }
+.bg-\[\#e8e5e2\] { background-color: var(--paper) !important; }
+.rounded-\[2rem\] { border-radius: 16px !important; }
+.rounded-\[1\.75rem\] { border-radius: 16px !important; }
+.rounded-\[45\%\] { border-radius: 24% !important; }
+
+@media (max-width: 1023px) {
+  .booking-summary { position: static; }
+}
+
 
 @media (max-width: 640px) {
   .display { letter-spacing: -.065em; }
