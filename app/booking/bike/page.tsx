@@ -2,11 +2,8 @@
 
 import Link from "next/link";
 import { BookingLayout } from "@/components/BookingLayout";
-import { BookingOption } from "@/components/BookingOption";
-import { bikes } from "@/lib/booking";
-import { useBooking } from "@/components/BookingProvider";
+import { BikeCarousel } from "@/components/BikeCarousel";
 
 export default function BookingBikePage() {
-  const { booking, updateBooking } = useBooking();
-  return <BookingLayout step="bike"><p className="eyebrow text-orange">Step 02 / Bike</p><h1 className="display mt-5 text-6xl font-bold md:text-8xl">Find your<br /><span className="text-orange">ride.</span></h1><div className="mt-10 space-y-3">{bikes.map((bike) => <BookingOption key={bike.id} selected={booking.bikeId === bike.id} title={bike.name} description={`${bike.type} · ${bike.description}`} meta={`€${bike.price}`} onClick={() => updateBooking({ bikeId: bike.id })} />)}</div><div className="mt-10 flex justify-between"><Link href="/booking/date" className="text-xs font-bold text-ink/55">Back</Link><Link href="/booking/size" className="rounded-full bg-orange px-6 py-3 text-[11px] font-bold text-white">Choose size ↗</Link></div></BookingLayout>;
+  return <BookingLayout step="bike"><p className="eyebrow text-orange">Step 02 / Bike type</p><h1 className="display mt-5 text-6xl font-bold md:text-8xl">Find your<br /><span className="text-orange">ride.</span></h1><p className="mt-6 max-w-md text-sm leading-relaxed text-ink/60">Choose the bike that fits the way you want to travel. Swipe, use the arrows, or tap a card to see its details.</p><div className="mt-10"><BikeCarousel /></div><div className="mt-10"><Link href="/booking/date" className="text-xs font-bold text-ink/55">‹&nbsp; Back to date</Link></div></BookingLayout>;
 }

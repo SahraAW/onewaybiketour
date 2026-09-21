@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Logo } from "./Logo";
 
 type RouteChoice = {
@@ -66,19 +67,26 @@ function MiniRoute() {
 }
 
 export function RouteOnboarding() {
+  const router = useRouter();
   const [selected, setSelected] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [step, setStep] = useState(0);
   const question = questions[step];
   const isRoutes = step === questions.length;
   const chooseAnswer = (answer: string) => setAnswers((current) => ({ ...current, [step]: answer }));
+  useEffect(() => {
+    if (isRoutes) {
+      window.localStorage.setItem("one-way-bike-tours-preferences", JSON.stringify({ answers, route: selected }));
+      router.push("/recommendations");
+    }
+  }, [answers, isRoutes, router, selected]);
   return <main className="route-flow grain min-h-screen bg-[#e8e5e2]">
     <header className="flex items-center justify-between px-5 py-6 md:px-10">
       <Logo />
       <span className="text-xs">◎</span>
     </header>
-    <div className={`mx-auto grid max-w-7xl gap-4 px-3 pb-8 ${!isRoutes ? "md:max-w-[440px]" : "md:grid-cols-3"}`}>
-      {!isRoutes && <section className="route-panel flex min-h-[590px] flex-col px-8 pb-7 pt-28 md:px-9">
+    <div className={`route-flow-content mx-auto grid w-full gap-4 px-[clamp(1.25rem,6vw,7rem)] pb-8 ${!isRoutes ? "max-w-3xl" : "md:grid-cols-3"}`}>
+      {!isRoutes && <section className="route-panel flex min-h-[590px] flex-col px-0 pb-7 pt-16 md:pt-24">
         <RouteMark />
         <div className="flex-1">
           <p className="eyebrow mb-2 text-[8px]">Personal questions</p>
@@ -91,7 +99,7 @@ export function RouteOnboarding() {
         <div className="flex items-center justify-between text-[10px] text-orange"><button onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; back</button><button className="rounded-full bg-orange px-7 py-2 text-white" onClick={() => setStep(step + 1)}>Continue</button></div>
         <div className="mt-14"><MiniRoute /></div>
       </section>}
-      {isRoutes && routeChoices.map((route, index) => <section key={route.city} className={`route-panel flex min-h-[590px] flex-col px-10 pb-7 pt-24 transition-shadow ${selected === route.city ? "ring-2 ring-orange" : ""}`}>
+      {isRoutes && routeChoices.map((route, index) => <section key={route.city} className={`route-panel flex min-h-[590px] flex-col px-0 pb-7 pt-16 transition-shadow ${selected === route.city ? "route-panel-selected" : ""}`}>
         <RouteMark />
         <div className="flex-1">
           <h2 className="max-w-[190px] text-xl font-bold leading-tight tracking-[-.04em]">{route.city}</h2>
