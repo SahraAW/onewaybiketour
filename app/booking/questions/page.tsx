@@ -9,10 +9,10 @@ import type { BikePreferences } from "@/lib/booking";
 import { useRouter } from "next/navigation";
 
 const questions: Array<{ key: keyof BikePreferences; title: string; options: string[] }> = [
-  { key: "experience", title: "What kind of bike rides are you used to?", options: ["City rides", "Mountain rides", "Track rides"] },
-  { key: "priority", title: "What would you most like from your bike?", options: ["Comfort and an upright riding position", "Speed and efficiency", "Extra assistance when cycling", "Budget friendly"] },
-  { key: "luggage", title: "Will you be carrying luggage during your ride?", options: ["No luggage", "A small backpack", "Some luggage on the bike", "A lot of luggage"] },
-  { key: "electric", title: "How important is electric assistance to you?", options: ["Very important", "Nice to have", "Not necessary"] },
+  { key: "tourDuration", title: "How long is your planned bike tour?", options: ["A few hours", "One day", "2–3 days", "4 days or longer", "Add Your Own Response"] },
+  { key: "bikeExperience", title: "What kind of bike rides are you used to?", options: ["City rides", "Mountain rides", "Track rides"] },
+  { key: "bikePreference", title: "What would you most like from your bike?", options: ["Comfort and an upright riding position", "Speed and efficiency", "Extra assistance when cycling", "Budget friendly"] },
+  { key: "electricAssistance", title: "How important is electric assistance to you?", options: ["Very important", "Nice to have", "Not necessary"] },
   { key: "height", title: "What is your height?", options: ["Under 160 cm", "160–170 cm", "171–180 cm", "181–190 cm"] }
 ];
 
@@ -22,9 +22,11 @@ export default function BookingQuestionsPage() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Partial<BikePreferences>>(booking.bikePreferences ?? {});
   const [showError, setShowError] = useState(false);
+  const [customResponseOpen, setCustomResponseOpen] = useState(false);
   const question = questions[step];
   const answer = answers[question.key];
   const choose = (value: string) => { setAnswers((current) => ({ ...current, [question.key]: value })); setShowError(false); };
+  const chooseCustomResponse = () => { setCustomResponseOpen(true); choose(""); };
   const continueQuestion = () => {
     if (!answer) { setShowError(true); return; }
     if (step === questions.length - 1) {
@@ -32,13 +34,14 @@ export default function BookingQuestionsPage() {
       router.push("/bike-recommendations");
       return;
     }
+    setCustomResponseOpen(false);
     setStep((current) => current + 1);
   };
   return <BookingLayout step="bike">
     <div className="booking-question-screen mx-auto w-full max-w-2xl">
-      <p className="eyebrow text-orange">Bike fit / Question {step + 1} of {questions.length}</p>
+      <p className="eyebrow text-orange">Personal questions / Question {step + 1} of {questions.length}</p>
       <h1 className="mt-5 max-w-xl text-3xl font-semibold leading-tight md:text-5xl">{question.title}</h1>
-      <div className="mt-8 grid gap-3">{question.options.map((option) => <BookingOption key={option} title={option} selected={answer === option} onClick={() => choose(option)} />)}</div>
+      <div className="mt-8 grid gap-3">{question.options.map((option) => option === "Add Your Own Response" ? <div key={option}><BookingOption title={option} selected={customResponseOpen} onClick={chooseCustomResponse} />{customResponseOpen && <input value={answer ?? ""} onChange={(event) => choose(event.target.value)} className="mt-2 min-h-11 w-full rounded-[10px] border border-orange bg-transparent px-4 py-3 text-sm outline-none placeholder:text-ink/45 focus:ring-2 focus:ring-orange/25" placeholder="Write your response..." aria-label="Your own tour duration" />}</div> : <BookingOption key={option} title={option} selected={answer === option} onClick={() => { setCustomResponseOpen(false); choose(option); }} />)}</div>
       {showError && <p role="alert" className="mt-4 text-sm font-bold text-orange">Please choose an answer before continuing.</p>}
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
         <button type="button" onClick={() => step === 0 ? router.push("/booking/date") : setStep((current) => current - 1)} className="min-h-11 text-sm font-bold text-orange">‹&nbsp; Back</button>

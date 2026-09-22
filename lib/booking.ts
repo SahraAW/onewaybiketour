@@ -27,10 +27,10 @@ export type Availability = {
 };
 
 export type BikePreferences = {
-  experience: string;
-  priority: string;
-  luggage: string;
-  electric: string;
+  tourDuration: string;
+  bikeExperience: string;
+  bikePreference: string;
+  electricAssistance: string;
   height: string;
 };
 
@@ -115,31 +115,30 @@ export function getBikeRecommendations(preferences: BikePreferences): BikeRecomm
 
 type MatchRule = { matches: boolean; points: number; reason: string };
 
-function getLuggageMatch(bike: Bike, luggage: string): { matches: boolean; reason: string } {
-  if (luggage === "No luggage") return { matches: bike.id !== "touring-bike", reason: "Light setup" };
-  if (luggage === "A small backpack") return { matches: bike.id === "touring-bike", reason: "Easy everyday setup" };
-  return { matches: bike.addons.includes("panniers"), reason: "Ready for luggage" };
+function scoreBike(bike: Bike, preferences: BikePreferences): BikeRecommendation {
+  const rules = getBikeMatchRules(bike, preferences);
+  const matches = rules.filter((rule) => rule.matches);
+  return { bike, score: Math.min(matches.reduce((total, rule) => total + rule.points, 0), 100), reasons: matches.length ? Array.from(new Set(matches.map((rule) => rule.reason))) : ["A strong all-round match"] };
 }
 
-function scoreBike(bike: Bike, preferences: BikePreferences): BikeRecommendation {
-  const luggage = getLuggageMatch(bike, preferences.luggage);
-  const rules: MatchRule[] = [
-    { matches: preferences.experience === "City rides" && bike.id === "touring-bike", points: 30, reason: "Comfortable for city rides" },
-    { matches: preferences.experience === "Mountain rides" && bike.id === "gravel-bike", points: 30, reason: "Stable on varied terrain" },
-    { matches: preferences.experience === "Track rides" && bike.id === "gravel-bike", points: 25, reason: "Fast and efficient" },
-    { matches: preferences.priority === "Comfort and an upright riding position" && bike.id === "touring-bike", points: 35, reason: "Comfort-first geometry" },
-    { matches: preferences.priority === "Speed and efficiency" && bike.id === "gravel-bike", points: 35, reason: "Built for speed" },
-    { matches: preferences.priority === "Extra assistance when cycling" && bike.id === "e-bike", points: 40, reason: "Extra electric assistance" },
-    { matches: preferences.priority === "Budget friendly" && bike.id === "touring-bike", points: 30, reason: "Best value option" },
-    { matches: luggage.matches, points: 20, reason: luggage.reason },
-    { matches: preferences.electric === "Very important" && bike.id === "e-bike", points: 35, reason: "Electric support included" },
-    { matches: preferences.electric === "Nice to have" && bike.id === "e-bike", points: 18, reason: "Optional-feeling assistance" },
-    { matches: preferences.electric === "Not necessary" && bike.id !== "e-bike", points: 15, reason: "Great without assistance" },
+function getBikeMatchRules(bike: Bike, preferences: BikePreferences): MatchRule[] {
+  return [
+    { matches: preferences.tourDuration === "A few hours" && bike.id === "touring-bike", points: 18, reason: "Well suited to shorter rides" },
+    { matches: (preferences.tourDuration === "2–3 days" || preferences.tourDuration === "4 days or longer") && bike.id === "gravel-bike", points: 18, reason: "Ready for longer touring" },
+    { matches: (preferences.tourDuration === "2–3 days" || preferences.tourDuration === "4 days or longer") && bike.id === "e-bike", points: 15, reason: "Comfortable over longer distances" },
+    { matches: preferences.bikeExperience === "City rides" && bike.id === "touring-bike", points: 30, reason: "Comfortable for city rides" },
+    { matches: preferences.bikeExperience === "Mountain rides" && bike.id === "gravel-bike", points: 30, reason: "Stable on varied terrain" },
+    { matches: preferences.bikeExperience === "Track rides" && bike.id === "gravel-bike", points: 25, reason: "Fast and efficient" },
+    { matches: preferences.bikePreference === "Comfort and an upright riding position" && bike.id === "touring-bike", points: 35, reason: "Comfort-first geometry" },
+    { matches: preferences.bikePreference === "Speed and efficiency" && bike.id === "gravel-bike", points: 35, reason: "Built for speed" },
+    { matches: preferences.bikePreference === "Extra assistance when cycling" && bike.id === "e-bike", points: 40, reason: "Extra electric assistance" },
+    { matches: preferences.bikePreference === "Budget friendly" && bike.id === "touring-bike", points: 30, reason: "Best value option" },
+    { matches: preferences.electricAssistance === "Very important" && bike.id === "e-bike", points: 35, reason: "Electric support included" },
+    { matches: preferences.electricAssistance === "Nice to have" && bike.id === "e-bike", points: 18, reason: "Optional-feeling assistance" },
+    { matches: preferences.electricAssistance === "Not necessary" && bike.id !== "e-bike", points: 15, reason: "Great without assistance" },
     { matches: preferences.height === "Under 160 cm" && bike.sizes.includes("S"), points: 8, reason: "Small frame available" },
     { matches: preferences.height === "181–190 cm" && bike.sizes.includes("L+"), points: 8, reason: "Tall rider size available" }
   ];
-  const matches = rules.filter((rule) => rule.matches);
-  return { bike, score: Math.min(matches.reduce((total, rule) => total + rule.points, 0), 100), reasons: matches.length ? Array.from(new Set(matches.map((rule) => rule.reason))) : ["A strong all-round match"] };
 }
 export function getTour(id: string | null): Tour | undefined {
   return tours.find((tour) => tour.id === id);
