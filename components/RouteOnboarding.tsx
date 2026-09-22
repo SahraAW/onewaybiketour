@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Logo } from "./Logo";
 import { FaqDialog } from "./FaqDialog";
+import { NavigationSteps } from "./NavigationSteps";
 
 type RouteChoice = {
   city: string;
@@ -91,6 +92,7 @@ export function RouteOnboarding() {
       <Logo />
       <FaqDialog />
     </header>
+    <NavigationSteps step={2} />
     <div className={`route-flow-content mx-auto grid w-full gap-4 px-[clamp(1.25rem,6vw,7rem)] pb-8 ${!isRoutes ? "max-w-3xl" : "md:grid-cols-3"}`}>
       {!isRoutes && <section className="route-panel flex flex-col px-0 pb-7 pt-8 md:pt-16">
         <RouteMark />

@@ -1,40 +1,9 @@
-import Link from "next/link";
-
-const steps = [
-  { id: "date", label: "Date", href: "/booking/date" },
-  { id: "bike", label: "Bike", href: "/booking/bike" },
-  { id: "size", label: "Size", href: "/booking/size" },
-  { id: "extras", label: "Extras", href: "/booking/extras" },
-  { id: "summary", label: "Summary", href: "/booking/summary" }
-];
+import { NavigationSteps } from "./NavigationSteps";
 
 export function BookingProgress({ activeStep }: Readonly<{ activeStep: string }>) {
-  const activeIndex = steps.findIndex((step) => step.id === activeStep);
-  return (
-    <nav aria-label="Booking progress" className="booking-progress">
-      {steps.map((step, index) => {
-        const complete = index < activeIndex;
-        const current = index === activeIndex;
-        const content = (
-          <>
-            <span className="booking-progress-number">{index + 1}</span>
-            <span>{step.label}</span>
-          </>
-        );
-        return complete ? (
-          <Link key={step.id} href={step.href} className="booking-progress-step booking-progress-complete">
-            {content}
-          </Link>
-        ) : (
-          <span
-            key={step.id}
-            aria-current={current ? "step" : undefined}
-            className={`booking-progress-step ${current ? "booking-progress-current" : "booking-progress-upcoming"}`}
-          >
-            {content}
-          </span>
-        );
-      })}
-    </nav>
-  );
+  let step: 4 | 5 | 6 | 7 = 7;
+  if (activeStep === "date") step = 4;
+  if (activeStep === "bike" || activeStep === "size") step = 5;
+  if (activeStep === "extras" || activeStep === "summary") step = 6;
+  return <NavigationSteps step={step} />;
 }

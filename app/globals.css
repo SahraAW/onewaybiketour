@@ -35,6 +35,30 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .display { letter-spacing: -.035em; line-height: .98; }
 .eyebrow { letter-spacing: .12em; text-transform: uppercase; font-size: 10px; }
 .orange-line { color: var(--orange); }
+.navigation-steps {
+  width: min(100%, 40rem);
+  margin: 0 auto;
+  padding: .5rem 1.25rem;
+}
+.navigation-steps img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.navigation-steps-fallback {
+  width: min(100% - 2.5rem, 40rem);
+  margin: .5rem auto;
+  color: var(--orange);
+  font-size: .7rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+.navigation-page-step {
+  width: min(42vw, 30rem);
+  margin: 0 auto;
+}
 .route-draw {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
