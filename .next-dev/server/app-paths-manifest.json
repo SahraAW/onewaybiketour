@@ -1,8 +1,9 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/booking/bike/page": "app/booking/bike/page.js",
-  "/recommendations/page": "app/recommendations/page.js",
-  "/page": "app/page.js",
+  "/confirmation/page": "app/confirmation/page.js",
   "/tours/page": "app/tours/page.js",
-  "/confirmation/page": "app/confirmation/page.js"
+  "/login/page": "app/login/page.js",
+  "/recommendations/page": "app/recommendations/page.js",
+  "/register/page": "app/register/page.js",
+  "/page": "app/page.js"
 }
