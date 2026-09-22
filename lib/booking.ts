@@ -35,9 +35,9 @@ export type BikePreferences = {
 };
 
 export const bikes: Bike[] = [
-  { id: "touring-bike", name: "Touring Bike", type: "Touring", description: "A lightweight and comfortable trekking bike, perfect for city rides and longer tours.", price: 200, image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1200&q=90", terrain: "paved", sizes: ["S", "M", "L+"], addons: ["helmet", "front-bags", "panniers", "phone-holder"] },
-  { id: "gravel-bike", name: "Gravel Bike", type: "Gravel", description: "Fast and stable on gravel roads, quiet lanes and everything between.", price: 250, image: "https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=1200&q=90", terrain: "gravel", sizes: ["S", "M", "L+"], addons: ["helmet", "front-bags", "phone-holder"] },
-  { id: "e-bike", name: "E-Bike", type: "Electric bike", description: "Extra assistance for long distances, rolling hills and relaxed exploration.", price: 290, image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?auto=format&fit=crop&w=1200&q=90", terrain: "mixed", sizes: ["S", "M", "L+"], addons: ["helmet", "front-bags", "phone-holder"] }
+  { id: "touring-bike", name: "Touring Bike", type: "Touring", description: "A lightweight and comfortable trekking bike, perfect for city rides and longer tours.", price: 200, image: "/bikes/Touring_01.png", terrain: "paved", sizes: ["S", "M", "L+"], addons: ["helmet", "front-bags", "panniers", "phone-holder"] },
+  { id: "gravel-bike", name: "Gravel Bike", type: "Gravel", description: "Fast and stable on gravel roads, quiet lanes and everything between.", price: 250, image: "/bikes/Gravel_01.png", terrain: "gravel", sizes: ["S", "M", "L+"], addons: ["helmet", "front-bags", "phone-holder"] },
+  { id: "e-bike", name: "E-Bike", type: "Electric bike", description: "Extra assistance for long distances, rolling hills and relaxed exploration.", price: 290, image: "/bikes/Electric_01.png", terrain: "mixed", sizes: ["S", "M", "L+"], addons: ["helmet", "front-bags", "phone-holder"] }
 ];
 
 export const extras: Extra[] = [
