@@ -92,12 +92,12 @@ export function RouteOnboarding() {
       <FaqDialog />
     </header>
     <div className={`route-flow-content mx-auto grid w-full gap-4 px-[clamp(1.25rem,6vw,7rem)] pb-8 ${!isRoutes ? "max-w-3xl" : "md:grid-cols-3"}`}>
-      {!isRoutes && <section className="route-panel flex flex-col px-0 pb-7 pt-16 md:pt-24">
+      {!isRoutes && <section className="route-panel flex flex-col px-0 pb-7 pt-8 md:pt-16">
         <RouteMark />
         <div className="flex-1">
-          <p className="eyebrow mb-3 text-orange">Question {step + 1} of {questions.length}</p>
-          <h1 className="mb-8 max-w-xl text-xl font-semibold leading-tight md:text-2xl">{question.title}</h1>
-          <div className="space-y-3">
+          <p className="question-eyebrow eyebrow text-orange">Personal questions / Question {step + 1} of {questions.length}</p>
+          <h1 className="question-title mt-5 max-w-xl text-3xl font-semibold leading-tight md:text-5xl">{question.title}</h1>
+          <div className="question-options mt-8 grid gap-3">
             {question.options.map((option) => option === "Add Your Own Response" ? (
               <div key={option}>
                 <button type="button" onClick={chooseCustomResponse} className={`route-option ${customResponseOpen ? "route-option-active" : ""}`}><span className="mr-3 inline-block h-3 w-3 rounded-full border border-ink/70" />{option}</button>
@@ -106,7 +106,7 @@ export function RouteOnboarding() {
             ) : <button type="button" key={option} onClick={() => { setCustomResponseOpen(false); chooseAnswer(option); }} className={`route-option ${answers[step] === option ? "route-option-active" : ""}`}><span className="mr-3 inline-block h-3 w-3 rounded-full border border-ink/70" />{option}</button>)}
           </div>
         </div>
-        <div className="flex items-center justify-between text-[10px] text-orange"><button onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; back</button><button className="rounded-full bg-orange px-7 py-2 text-white" onClick={() => setStep(step + 1)}>Continue</button></div>
+        <div className="question-actions mt-8 flex flex-wrap items-center justify-between gap-4"><button type="button" className="min-h-11 text-sm font-bold text-orange" onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; Back</button><button type="button" className="min-h-11 rounded-[20px] bg-orange px-7 py-3 text-sm font-bold text-white" onClick={() => setStep(step + 1)}>Continue</button></div>
       </section>}
       {isRoutes && routeChoices.map((route, index) => <section key={route.city} className={`route-panel flex flex-col px-0 pb-7 pt-16 transition-shadow ${selected === route.city ? "route-panel-selected" : ""}`}>
         <RouteMark />
