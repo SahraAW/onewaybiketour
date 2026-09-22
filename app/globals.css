@@ -77,11 +77,12 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   width: 100%;
   min-width: 0;
   border: 1px solid rgba(32,32,32,.28);
-  border-radius: 10px;
-  padding: 8px 12px;
+  border-radius: 20px;
+  padding: 14px 16px;
   text-align: left;
-  font-size: 9px;
+  font-size: .875rem;
   line-height: 1.4;
+  min-height: 54px;
   overflow-wrap: anywhere;
   transition: background-color .2s, border-color .2s;
 }
@@ -184,7 +185,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   transition: transform .2s, background-color .2s, color .2s;
 }
 .calendar-day-premium { background: var(--orange); color: white; }
-.calendar-day-value { background: rgba(245,90,0,.2); }
+.calendar-day-value { background: #FFE787; color: var(--ink); }
 .calendar-day-standard { background: transparent; }
 .calendar-day:not(:disabled):hover { transform: translateY(-2px); }
 .calendar-day-selected { outline: 2px solid var(--ink); outline-offset: 3px; }
@@ -193,7 +194,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .calendar-legend span { display: inline-flex; align-items: center; gap: .4rem; }
 .calendar-dot { display: inline-block; width: .65rem; height: .65rem; border-radius: 999px; }
 .calendar-dot-premium { background: var(--orange); }
-.calendar-dot-value { background: rgba(245,90,0,.2); }
+.calendar-dot-value { background: #FFE787; }
 .calendar-dot-standard { border: 1px solid var(--ink); }
 .booking-progress {
   display: grid;
@@ -270,7 +271,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .bike-carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
 .bike-carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.3); transition: width .2s, background-color .2s; }
 .bike-carousel-dots button.active { width: 1.6rem; background: var(--orange); }
-.bike-detail-image { min-height: clamp(16rem, 42vw, 34rem); border-radius: 1.75rem; background-position: center; background-size: cover; }
+.bike-detail-image { min-height: clamp(16rem, 42vw, 34rem); overflow: hidden; border-radius: 1.75rem; background: var(--paper); }
 .bike-size { min-width: 3.5rem; border: 1px solid rgba(32,32,32,.35); border-radius: 10px; padding: .6rem 1rem; font-size: .75rem; transition: border-color .2s, background-color .2s; }
 .bike-size.selected, .bike-size:hover { border-color: var(--orange); background: rgba(245,90,0,.1); }
 .tour-carousel { width: 100%; min-width: 0; touch-action: pan-y; }

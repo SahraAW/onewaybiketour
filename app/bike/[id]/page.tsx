@@ -24,7 +24,9 @@ export default function BikeDetailPage() {
     <BookingLayout step="size">
       <Link href="/booking/bike" className="text-sm font-medium text-orange">‹&nbsp; back to bikes</Link>
       <div className="mt-6 grid gap-10 md:grid-cols-[1.1fr_.9fr] md:items-center">
-        <div className="bike-detail-image" style={{ backgroundImage: `url("${bike.image}")` }} role="img" aria-label={bike.name} />
+        <div className="bike-detail-image">
+          <img src={bike.image} alt={bike.name} className="h-full w-full object-cover" />
+        </div>
         <div>
           <p className="eyebrow text-orange">Bike type / {bike.terrain}</p>
           <h1 className="display mt-4 text-6xl font-bold md:text-8xl">{bike.name}</h1>

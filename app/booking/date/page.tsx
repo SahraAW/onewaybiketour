@@ -66,7 +66,7 @@ export default function BookingDatePage() {
           <Link
             href="/booking/questions"
             onClick={(event) => { if (!selected) { event.preventDefault(); setShowError(true); } else updateBooking({ date: selected }); }}
-            className={`rounded-full px-9 py-4 text-base font-medium text-white transition-opacity ${selected ? "bg-orange" : "bg-orange/50"}`}
+            className={`rounded-[20px] px-9 py-4 text-base font-medium text-white transition-opacity ${selected ? "bg-orange" : "bg-orange/50"}`}
           >
             Continue
           </Link>
