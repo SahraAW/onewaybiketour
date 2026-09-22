@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Logo } from "./Logo";
+import { FaqDialog } from "./FaqDialog";
 
 type RouteChoice = {
   city: string;
@@ -88,7 +89,7 @@ export function RouteOnboarding() {
   return <main className="route-flow grain min-h-screen bg-[#e8e5e2]">
     <header className="flex items-center justify-between px-5 py-6 md:px-10">
       <Logo />
-      <span className="text-xs">◎</span>
+      <FaqDialog />
     </header>
     <div className={`route-flow-content mx-auto grid w-full gap-4 px-[clamp(1.25rem,6vw,7rem)] pb-8 ${!isRoutes ? "max-w-3xl" : "md:grid-cols-3"}`}>
       {!isRoutes && <section className="route-panel flex flex-col px-0 pb-7 pt-16 md:pt-24">
