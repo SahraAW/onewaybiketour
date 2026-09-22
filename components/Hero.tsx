@@ -13,10 +13,10 @@ export function Hero() {
         <p className="eyebrow mb-8 text-orange">Slow travel / fast heartbeat</p>
         <h1 className="display max-w-[650px] text-[clamp(4.2rem,12vw,9.5rem)] font-bold">bike<br /><span className="text-orange">tours</span></h1>
         <p className="mt-9 max-w-sm text-base leading-relaxed text-ink/70 md:text-lg">Explore a growing range of one-way and round-trip bike tours in Denmark and across Europe.</p>
-        <div className="mt-8 grid max-w-[540px] grid-cols-2 gap-4">
-          <Button href="/register" variant="outline" className="min-h-14 rounded-[1.5rem] text-sm">Register</Button>
-          <Button href="/login" className="min-h-14 rounded-[1.5rem] text-sm">Log in</Button>
-          <a href="/onboarding" className="col-span-2 inline-flex min-h-16 w-full items-center justify-center gap-3 rounded-[1.5rem] bg-orange px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#d94f00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange">Find your match <span aria-hidden="true">↗</span></a>
+        <div className="mt-8 grid max-w-[320px] grid-cols-2 gap-2">
+          <Button href="/register" variant="outline" className="min-h-10 rounded-lg px-3 py-2 text-[10px]">Register</Button>
+          <Button href="/login" className="min-h-10 rounded-lg px-3 py-2 text-[10px]">Log in</Button>
+          <a href="/onboarding" className="col-span-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-orange px-4 py-2.5 text-[10px] font-semibold text-white transition-colors hover:bg-[#d94f00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange">Find your match <span aria-hidden="true">↗</span></a>
         </div>
       </motion.div>
       <motion.div initial={{ opacity: 0, scale: .94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: .15 }} className="relative h-[390px] text-orange md:h-[600px]">
