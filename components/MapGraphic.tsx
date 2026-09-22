@@ -6,7 +6,7 @@ export function MapGraphic({ detail = false }: Readonly<{ detail?: boolean }>) {
     return <Image src={denmarkMap} alt="Illustrated map of Denmark" className="h-full w-full object-contain" priority />;
   }
 
-  return <svg viewBox="0 0 500 600" className="h-full min-h-[440px] w-full" role="img" aria-label="Abstract bike tour route map">
+  return <svg viewBox="0 0 500 600" className="h-auto w-full" role="img" aria-label="Abstract bike tour route map">
     <path d="M110 10 C175 72 92 112 156 160 S280 180 235 256 C198 321 282 322 333 278 S417 245 392 350 C371 436 420 445 365 548" fill="none" stroke="currentColor" strokeWidth="1.5" opacity=".2" />
     <path className="route-draw" pathLength="1" d="M75 505 C110 456 64 420 132 384 S194 322 160 285 C130 255 184 226 217 235 C254 245 258 190 295 163 S371 126 352 77" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
     <circle cx="75" cy="505" r="11" fill="var(--paper)" stroke="currentColor" strokeWidth="3" />

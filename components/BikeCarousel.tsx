@@ -33,7 +33,7 @@ export function BikeCarousel() {
     >
       <div className="bike-carousel-stage">
         <button type="button" onClick={() => move(-1)} className="bike-arrow bike-arrow-left" aria-label="Previous bike">‹</button>
-        <button type="button" onClick={choose} onKeyDown={onKeyDown} className="bike-slide" aria-label={`Choose ${bike.name}`}>
+        <button type="button" onClick={choose} onKeyDown={onKeyDown} className="bike-slide min-w-0" aria-label={`Choose ${bike.name}`}>
           <div className="bike-slide-image" style={{ backgroundImage: `url("${bike.image}")` }} />
           <div className="bike-slide-copy">
             <p className="eyebrow text-orange">{index === 0 ? "Our suggestion" : bike.type}</p>

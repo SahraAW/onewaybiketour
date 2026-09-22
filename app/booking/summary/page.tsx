@@ -25,11 +25,11 @@ export default function BookingSummaryPage() {
       </h1>
       <div className="mt-10 divide-y divide-ink/15 border-y border-ink/15">
         {rows.map(([label, value, href]) => (
-          <div key={label} className="flex items-center justify-between gap-5 py-4 text-sm">
+          <div key={label} className="flex min-w-0 items-start justify-between gap-4 py-4 text-sm">
             <span className="text-ink/50">{label}</span>
-            <span className="flex items-center gap-3">
-              <strong className="text-right">{value}</strong>
-              <Link href={href} className="text-[10px] font-bold text-orange">Edit</Link>
+            <span className="flex min-w-0 items-start justify-end gap-3 text-right">
+              <strong className="min-w-0 break-words">{value}</strong>
+              <Link href={href} className="shrink-0 text-[10px] font-bold text-orange">Edit</Link>
             </span>
           </div>
         ))}

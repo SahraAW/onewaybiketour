@@ -520,14 +520,8 @@ video {
 .inset-0{
   inset: 0px;
 }
-.bottom-7{
-  bottom: 1.75rem;
-}
 .left-\[-17px\]{
   left: -17px;
-}
-.right-3{
-  right: 0.75rem;
 }
 .right-\[-17px\]{
   right: -17px;
@@ -549,9 +543,6 @@ video {
 .mb-1{
   margin-bottom: 0.25rem;
 }
-.mb-2{
-  margin-bottom: 0.5rem;
-}
 .mb-20{
   margin-bottom: 5rem;
 }
@@ -567,9 +558,6 @@ video {
 .mb-6{
   margin-bottom: 1.5rem;
 }
-.mb-7{
-  margin-bottom: 1.75rem;
-}
 .mb-8{
   margin-bottom: 2rem;
 }
@@ -579,11 +567,8 @@ video {
 .ml-3{
   margin-left: 0.75rem;
 }
-.ml-auto{
-  margin-left: auto;
-}
-.mr-2{
-  margin-right: 0.5rem;
+.mr-3{
+  margin-right: 0.75rem;
 }
 .mt-1{
   margin-top: 0.25rem;
@@ -594,17 +579,8 @@ video {
 .mt-12{
   margin-top: 3rem;
 }
-.mt-14{
-  margin-top: 3.5rem;
-}
-.mt-16{
-  margin-top: 4rem;
-}
 .mt-2{
   margin-top: 0.5rem;
-}
-.mt-20{
-  margin-top: 5rem;
 }
 .mt-24{
   margin-top: 6rem;
@@ -630,9 +606,6 @@ video {
 .mt-9{
   margin-top: 2.25rem;
 }
-.mr-3{
-  margin-right: 0.75rem;
-}
 .block{
   display: block;
 }
@@ -657,11 +630,8 @@ video {
 .aspect-\[4\/3\]{
   aspect-ratio: 4/3;
 }
-.h-2{
-  height: 0.5rem;
-}
-.h-5{
-  height: 1.25rem;
+.h-3{
+  height: 0.75rem;
 }
 .h-8{
   height: 2rem;
@@ -675,17 +645,8 @@ video {
 .h-full{
   height: 100%;
 }
-.h-3{
-  height: 0.75rem;
-}
-.min-h-\[440px\]{
-  min-height: 440px;
-}
 .min-h-\[470px\]{
   min-height: 470px;
-}
-.min-h-\[590px\]{
-  min-height: 590px;
 }
 .min-h-\[calc\(100vh-88px\)\]{
   min-height: calc(100vh - 88px);
@@ -693,14 +654,11 @@ video {
 .min-h-screen{
   min-height: 100vh;
 }
-.w-11{
-  width: 2.75rem;
-}
-.w-2{
-  width: 0.5rem;
-}
 .w-20{
   width: 5rem;
+}
+.w-3{
+  width: 0.75rem;
 }
 .w-auto{
   width: auto;
@@ -708,8 +666,9 @@ video {
 .w-full{
   width: 100%;
 }
-.w-3{
-  width: 0.75rem;
+.w-fit{
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .min-w-0{
   min-width: 0px;
@@ -719,6 +678,9 @@ video {
 }
 .max-w-3xl{
   max-width: 48rem;
+}
+.max-w-5xl{
+  max-width: 64rem;
 }
 .max-w-7xl{
   max-width: 80rem;
@@ -744,9 +706,8 @@ video {
 .shrink-0{
   flex-shrink: 0;
 }
-.rotate-\[-90deg\]{
-  --tw-rotate: -90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.basis-full{
+  flex-basis: 100%;
 }
 .grid-cols-2{
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -771,6 +732,9 @@ video {
 }
 .items-center{
   align-items: center;
+}
+.justify-end{
+  justify-content: flex-end;
 }
 .justify-center{
   justify-content: center;
@@ -824,6 +788,12 @@ video {
 }
 .overflow-hidden{
   overflow: hidden;
+}
+.overflow-y-auto{
+  overflow-y: auto;
+}
+.break-words{
+  overflow-wrap: break-word;
 }
 .rounded-2xl{
   border-radius: 1rem;
@@ -915,6 +885,10 @@ video {
   -o-object-fit: contain;
      object-fit: contain;
 }
+.object-cover{
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .p-3{
   padding: 0.75rem;
 }
@@ -965,10 +939,6 @@ video {
   padding-left: clamp(1.25rem, 6vw, 7rem);
   padding-right: clamp(1.25rem, 6vw, 7rem);
 }
-.py-10{
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
 .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -976,10 +946,6 @@ video {
 .py-2\.5{
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
-}
-.py-20{
-  padding-top: 5rem;
-  padding-bottom: 5rem;
 }
 .py-3{
   padding-top: 0.75rem;
@@ -1007,6 +973,9 @@ video {
 .pb-16{
   padding-bottom: 4rem;
 }
+.pb-20{
+  padding-bottom: 5rem;
+}
 .pb-24{
   padding-bottom: 6rem;
 }
@@ -1018,6 +987,9 @@ video {
 }
 .pb-9{
   padding-bottom: 2.25rem;
+}
+.pt-10{
+  padding-top: 2.5rem;
 }
 .pt-12{
   padding-top: 3rem;
@@ -1047,10 +1019,6 @@ video {
 .text-3xl{
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-.text-5xl{
-  font-size: 3rem;
-  line-height: 1;
 }
 .text-6xl{
   font-size: 3.75rem;
@@ -1098,9 +1066,6 @@ video {
 .font-medium{
   font-weight: 500;
 }
-.font-normal{
-  font-weight: 400;
-}
 .font-semibold{
   font-weight: 600;
 }
@@ -1121,12 +1086,6 @@ video {
 }
 .tracking-\[-\.06em\]{
   letter-spacing: -.06em;
-}
-.tracking-\[-\.07em\]{
-  letter-spacing: -.07em;
-}
-.tracking-\[\.2em\]{
-  letter-spacing: .2em;
 }
 .text-ink{
   color: var(--ink);
@@ -1244,7 +1203,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 @keyframes route-draw { to { stroke-dashoffset: 0; } }
 .route-panel {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background: transparent;
   min-width: 0;
 }
@@ -1303,6 +1262,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 }
 .calendar-screen {
   width: min(100%, 42rem);
+  min-width: 0;
   margin-inline: auto;
   color: var(--ink);
 }
@@ -1429,10 +1389,34 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .booking-progress-current .booking-progress-number { background: var(--orange); border-color: var(--orange); color: white; }
 .booking-progress-upcoming { color: rgba(37, 37, 37, .35); }
 .booking-progress-complete:hover { color: var(--ink); }
+@media (max-width: 480px) {
+  .booking-progress {
+    padding-block: .75rem;
+  }
+  .booking-progress-step {
+    gap: .25rem;
+    font-size: .5rem;
+    letter-spacing: .04em;
+    white-space: nowrap;
+  }
+  .booking-progress-number {
+    width: 1.4rem;
+    font-size: .55rem;
+  }
+  .calendar-grid {
+    gap: .35rem .15rem;
+  }
+  .calendar-weekday {
+    font-size: .6rem;
+  }
+  .calendar-day {
+    font-size: .85rem;
+  }
+}
 .bike-carousel { width: 100%; touch-action: pan-y; }
 .bike-slide:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
 .bike-carousel-stage { position: relative; display: flex; align-items: center; gap: clamp(.5rem, 2vw, 1.5rem); }
-.bike-slide { display: grid; width: 100%; overflow: hidden; border: 1px solid rgba(32,32,32,.16); border-radius: 16px; background: rgba(255,255,255,.3); text-align: left; transition: border-color .2s, transform .2s; }
+.bike-slide { display: grid; width: auto; min-width: 0; flex: 1 1 auto; overflow: hidden; border: 1px solid rgba(32,32,32,.16); border-radius: 16px; background: rgba(255,255,255,.3); text-align: left; transition: border-color .2s, transform .2s; }
 .bike-slide:hover { border-color: var(--orange); transform: translateY(-2px); }
 .bike-slide-image { min-height: clamp(15rem, 38vw, 26rem); background-position: center; background-size: cover; }
 .bike-slide-copy { display: grid; gap: .65rem; padding: clamp(1rem, 3vw, 2rem); }
@@ -1447,12 +1431,19 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .bike-detail-image { min-height: clamp(16rem, 42vw, 34rem); border-radius: 1.75rem; background-position: center; background-size: cover; }
 .bike-size { min-width: 3.5rem; border: 1px solid rgba(32,32,32,.35); border-radius: 10px; padding: .6rem 1rem; font-size: .75rem; transition: border-color .2s, background-color .2s; }
 .bike-size.selected, .bike-size:hover { border-color: var(--orange); background: rgba(245,90,0,.1); }
-.tour-carousel { width: 100%; touch-action: pan-y; }
+.tour-carousel { width: 100%; min-width: 0; touch-action: pan-y; }
+.carousel-stage { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.65rem, 2vw, 1rem); min-width: 0; }
+.carousel-card { min-width: 0; }
+.recommendation-card h2,
+.recommendation-card p { overflow-wrap: anywhere; }
+.recommendation-card-content { display: flex; min-height: 14rem; flex-direction: column; align-items: flex-start; }
+.recommendation-card-content .recommendation-reason { margin-top: auto; }
 .carousel-arrow { display: grid; width: 2.8rem; aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 1px solid var(--ink); border-radius: 999px; font-size: 1.8rem; line-height: 1; transition: background-color .2s, color .2s; }
 .carousel-arrow:hover, .carousel-arrow:focus-visible { border-color: var(--orange); background: var(--orange); color: white; }
 .carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
 .carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.25); transition: width .2s, background-color .2s; }
 .carousel-dots button.active { width: 1.6rem; background: var(--orange); }
+.recommendations-page { overflow: hidden; }
 .booking-summary { min-width: 0; }
 
 /* Keep legacy page utility colors aligned with the new design tokens. */
@@ -1470,10 +1461,10 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 
 @media (max-width: 640px) {
   .display { letter-spacing: -.065em; }
-  .route-flow-content { grid-template-columns: 1fr; min-height: calc(100svh - 82px); padding-inline: 1.25rem; padding-top: 1rem; }
+  .route-flow-content { grid-template-columns: 1fr; min-height: auto; align-items: start; padding-inline: 1.25rem; padding-top: 1rem; }
   .route-flow > header { padding-inline: 16px; }
   .route-flow > div { padding-inline: 12px; }
-  .route-panel { min-height: min(620px, calc(100svh - 92px)); }
+  .route-panel { min-height: 0; }
   .route-panel.flex { padding-inline: 0; }
   .route-card-footer { margin-inline: 0 !important; padding-inline: 0; }
   .route-option { min-height: 34px; padding: 7px 12px; font-size: 10px; }
@@ -1494,10 +1485,29 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   .bike-carousel-stage { gap: .35rem; }
   .bike-arrow { width: 2.4rem; font-size: 1.5rem; }
   .bike-slide-image { min-height: 13rem; }
+  .bike-slide-copy { min-width: 0; }
+  .bike-slide-copy h2,
+  .bike-slide-copy p { overflow-wrap: anywhere; }
+  .recommendations-page { padding-top: 2rem; }
+  .recommendations-intro h1 { font-size: clamp(4rem, 19vw, 6rem); }
+  .recommendations-results { margin-top: 2.5rem; }
+  .carousel-stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: .75rem; }
+  .carousel-card { grid-column: 1 / -1; grid-row: 1; }
   .carousel-arrow { width: 2.35rem; font-size: 1.45rem; }
+  .carousel-stage .carousel-arrow:first-child { grid-column: 1; grid-row: 2; justify-self: start; }
+  .carousel-stage .carousel-arrow:last-child { grid-column: 2; grid-row: 2; justify-self: end; }
+  .recommendation-card-content { min-height: 0; padding: 1.1rem; }
+  .recommendation-card-content h2 { font-size: 1.5rem; }
+  .recommendation-card-content .recommendation-reason { margin-top: 1rem; }
   .booking-progress { gap: .2rem; }
   .booking-progress-step { flex-direction: column; gap: .3rem; font-size: .5rem; letter-spacing: .06em; }
   .booking-progress-number { width: 1.45rem; }
+}
+
+@media (max-width: 767px) {
+  .bike-detail-image { min-height: 0; aspect-ratio: 4 / 3; }
+  .route-flow-content .route-panel { min-height: 0; }
+  .route-flow-content .route-panel > div.flex-1 { min-height: 0; }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
@@ -1568,6 +1578,15 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   .sm\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .sm\:items-center{
+    align-items: center;
+  }
+
+  .sm\:py-10{
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
 }
 
 @media (min-width: 768px){
@@ -1576,20 +1595,20 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
     margin-top: 0px;
   }
 
+  .md\:mt-12{
+    margin-top: 3rem;
+  }
+
+  .md\:mt-20{
+    margin-top: 5rem;
+  }
+
   .md\:block{
     display: block;
   }
 
-  .md\:flex{
-    display: flex;
-  }
-
   .md\:grid{
     display: grid;
-  }
-
-  .md\:hidden{
-    display: none;
   }
 
   .md\:h-\[600px\]{
@@ -1604,10 +1623,6 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-\[\.8fr_1\.2fr\]{
-    grid-template-columns: .8fr 1.2fr;
-  }
-
   .md\:grid-cols-\[\.9fr_1\.1fr\]{
     grid-template-columns: .9fr 1.1fr;
   }
@@ -1616,8 +1631,8 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
     grid-template-columns: 1.1fr .9fr;
   }
 
-  .md\:grid-cols-\[180px_1\.3fr_1fr_auto\]{
-    grid-template-columns: 180px 1.3fr 1fr auto;
+  .md\:grid-cols-\[180px_minmax\(0\2c 1\.3fr\)_minmax\(0\2c 1fr\)_auto\]{
+    grid-template-columns: 180px minmax(0,1.3fr) minmax(0,1fr) auto;
   }
 
   .md\:grid-cols-\[auto_1fr\]{
@@ -1648,18 +1663,25 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
     padding: 3rem;
   }
 
+  .md\:p-7{
+    padding: 1.75rem;
+  }
+
   .md\:px-10{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
 
-  .md\:py-28{
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-
   .md\:pb-16{
     padding-bottom: 4rem;
+  }
+
+  .md\:pb-24{
+    padding-bottom: 6rem;
+  }
+
+  .md\:pt-14{
+    padding-top: 3.5rem;
   }
 
   .md\:pt-16{
@@ -1674,9 +1696,9 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
     padding-top: 6rem;
   }
 
-  .md\:text-7xl{
-    font-size: 4.5rem;
-    line-height: 1;
+  .md\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:text-8xl{
@@ -1692,11 +1714,6 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   .md\:text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-
-  .md\:text-2xl{
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 }
 
@@ -1722,12 +1739,16 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
     display: none;
   }
 
-  .lg\:grid-cols-\[1fr_320px\]{
-    grid-template-columns: 1fr 320px;
+  .lg\:grid-cols-\[minmax\(0\2c 1fr\)_320px\]{
+    grid-template-columns: minmax(0,1fr) 320px;
   }
 
   .lg\:items-start{
     align-items: flex-start;
+  }
+
+  .lg\:gap-10{
+    gap: 2.5rem;
   }
 }
 

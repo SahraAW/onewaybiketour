@@ -15,8 +15,8 @@ export function BookingSummary() {
       <p className="eyebrow mb-4 text-orange">Your booking</p>
       {tour ? (
         <div className="flex items-start justify-between gap-3">
-          <div>
-            <h2 className="text-xl font-bold tracking-[-.04em]">{tour.name}</h2>
+          <div className="min-w-0">
+            <h2 className="break-words text-xl font-bold tracking-[-.04em]">{tour.name}</h2>
             <p className="mt-1 text-xs text-ink/55">{tour.start} → {tour.end}</p>
           </div>
           <Link href="/recommendations" className="text-[10px] font-bold text-orange">Edit</Link>
@@ -28,13 +28,13 @@ export function BookingSummary() {
         {booking.date && (
           <div className="flex items-center justify-between">
             <dt>Date</dt>
-            <dd className="flex items-center gap-2 font-bold"><span>{booking.date}</span><Link href="/booking/date" className="text-orange" aria-label="Edit date">Edit</Link></dd>
+            <dd className="flex min-w-0 items-center gap-2 font-bold"><span className="break-words text-right">{booking.date}</span><Link href="/booking/date" className="shrink-0 text-orange" aria-label="Edit date">Edit</Link></dd>
           </div>
         )}
         {bike && (
           <div className="flex items-center justify-between">
             <dt>Bike</dt>
-            <dd className="flex items-center gap-2 font-bold"><span>{bike.name}</span><Link href="/booking/bike" className="text-orange" aria-label="Edit bike">Edit</Link></dd>
+            <dd className="flex min-w-0 items-center gap-2 font-bold"><span className="break-words text-right">{bike.name}</span><Link href="/booking/bike" className="shrink-0 text-orange" aria-label="Edit bike">Edit</Link></dd>
           </div>
         )}
         {booking.bikeSize && (

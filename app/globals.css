@@ -43,7 +43,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 @keyframes route-draw { to { stroke-dashoffset: 0; } }
 .route-panel {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background: transparent;
   min-width: 0;
 }
@@ -102,6 +102,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 }
 .calendar-screen {
   width: min(100%, 42rem);
+  min-width: 0;
   margin-inline: auto;
   color: var(--ink);
 }
@@ -225,10 +226,34 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .booking-progress-current .booking-progress-number { background: var(--orange); border-color: var(--orange); color: white; }
 .booking-progress-upcoming { color: rgba(37, 37, 37, .35); }
 .booking-progress-complete:hover { color: var(--ink); }
+@media (max-width: 480px) {
+  .booking-progress {
+    padding-block: .75rem;
+  }
+  .booking-progress-step {
+    gap: .25rem;
+    font-size: .5rem;
+    letter-spacing: .04em;
+    white-space: nowrap;
+  }
+  .booking-progress-number {
+    width: 1.4rem;
+    font-size: .55rem;
+  }
+  .calendar-grid {
+    gap: .35rem .15rem;
+  }
+  .calendar-weekday {
+    font-size: .6rem;
+  }
+  .calendar-day {
+    font-size: .85rem;
+  }
+}
 .bike-carousel { width: 100%; touch-action: pan-y; }
 .bike-slide:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
 .bike-carousel-stage { position: relative; display: flex; align-items: center; gap: clamp(.5rem, 2vw, 1.5rem); }
-.bike-slide { display: grid; width: 100%; overflow: hidden; border: 1px solid rgba(32,32,32,.16); border-radius: 16px; background: rgba(255,255,255,.3); text-align: left; transition: border-color .2s, transform .2s; }
+.bike-slide { display: grid; width: auto; min-width: 0; flex: 1 1 auto; overflow: hidden; border: 1px solid rgba(32,32,32,.16); border-radius: 16px; background: rgba(255,255,255,.3); text-align: left; transition: border-color .2s, transform .2s; }
 .bike-slide:hover { border-color: var(--orange); transform: translateY(-2px); }
 .bike-slide-image { min-height: clamp(15rem, 38vw, 26rem); background-position: center; background-size: cover; }
 .bike-slide-copy { display: grid; gap: .65rem; padding: clamp(1rem, 3vw, 2rem); }
@@ -243,12 +268,19 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .bike-detail-image { min-height: clamp(16rem, 42vw, 34rem); border-radius: 1.75rem; background-position: center; background-size: cover; }
 .bike-size { min-width: 3.5rem; border: 1px solid rgba(32,32,32,.35); border-radius: 10px; padding: .6rem 1rem; font-size: .75rem; transition: border-color .2s, background-color .2s; }
 .bike-size.selected, .bike-size:hover { border-color: var(--orange); background: rgba(245,90,0,.1); }
-.tour-carousel { width: 100%; touch-action: pan-y; }
+.tour-carousel { width: 100%; min-width: 0; touch-action: pan-y; }
+.carousel-stage { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.65rem, 2vw, 1rem); min-width: 0; }
+.carousel-card { min-width: 0; }
+.recommendation-card h2,
+.recommendation-card p { overflow-wrap: anywhere; }
+.recommendation-card-content { display: flex; min-height: 14rem; flex-direction: column; align-items: flex-start; }
+.recommendation-card-content .recommendation-reason { margin-top: auto; }
 .carousel-arrow { display: grid; width: 2.8rem; aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 1px solid var(--ink); border-radius: 999px; font-size: 1.8rem; line-height: 1; transition: background-color .2s, color .2s; }
 .carousel-arrow:hover, .carousel-arrow:focus-visible { border-color: var(--orange); background: var(--orange); color: white; }
 .carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
 .carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.25); transition: width .2s, background-color .2s; }
 .carousel-dots button.active { width: 1.6rem; background: var(--orange); }
+.recommendations-page { overflow: hidden; }
 .booking-summary { min-width: 0; }
 
 /* Keep legacy page utility colors aligned with the new design tokens. */
@@ -266,10 +298,10 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 
 @media (max-width: 640px) {
   .display { letter-spacing: -.065em; }
-  .route-flow-content { grid-template-columns: 1fr; min-height: calc(100svh - 82px); padding-inline: 1.25rem; padding-top: 1rem; }
+  .route-flow-content { grid-template-columns: 1fr; min-height: auto; align-items: start; padding-inline: 1.25rem; padding-top: 1rem; }
   .route-flow > header { padding-inline: 16px; }
   .route-flow > div { padding-inline: 12px; }
-  .route-panel { min-height: min(620px, calc(100svh - 92px)); }
+  .route-panel { min-height: 0; }
   .route-panel.flex { padding-inline: 0; }
   .route-card-footer { margin-inline: 0 !important; padding-inline: 0; }
   .route-option { min-height: 34px; padding: 7px 12px; font-size: 10px; }
@@ -290,10 +322,29 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   .bike-carousel-stage { gap: .35rem; }
   .bike-arrow { width: 2.4rem; font-size: 1.5rem; }
   .bike-slide-image { min-height: 13rem; }
+  .bike-slide-copy { min-width: 0; }
+  .bike-slide-copy h2,
+  .bike-slide-copy p { overflow-wrap: anywhere; }
+  .recommendations-page { padding-top: 2rem; }
+  .recommendations-intro h1 { font-size: clamp(4rem, 19vw, 6rem); }
+  .recommendations-results { margin-top: 2.5rem; }
+  .carousel-stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: .75rem; }
+  .carousel-card { grid-column: 1 / -1; grid-row: 1; }
   .carousel-arrow { width: 2.35rem; font-size: 1.45rem; }
+  .carousel-stage .carousel-arrow:first-child { grid-column: 1; grid-row: 2; justify-self: start; }
+  .carousel-stage .carousel-arrow:last-child { grid-column: 2; grid-row: 2; justify-self: end; }
+  .recommendation-card-content { min-height: 0; padding: 1.1rem; }
+  .recommendation-card-content h2 { font-size: 1.5rem; }
+  .recommendation-card-content .recommendation-reason { margin-top: 1rem; }
   .booking-progress { gap: .2rem; }
   .booking-progress-step { flex-direction: column; gap: .3rem; font-size: .5rem; letter-spacing: .06em; }
   .booking-progress-number { width: 1.45rem; }
+}
+
+@media (max-width: 767px) {
+  .bike-detail-image { min-height: 0; aspect-ratio: 4 / 3; }
+  .route-flow-content .route-panel { min-height: 0; }
+  .route-flow-content .route-panel > div.flex-1 { min-height: 0; }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {

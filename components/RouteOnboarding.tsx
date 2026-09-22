@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Logo } from "./Logo";
 
@@ -92,7 +91,7 @@ export function RouteOnboarding() {
       <span className="text-xs">◎</span>
     </header>
     <div className={`route-flow-content mx-auto grid w-full gap-4 px-[clamp(1.25rem,6vw,7rem)] pb-8 ${!isRoutes ? "max-w-3xl" : "md:grid-cols-3"}`}>
-      {!isRoutes && <section className="route-panel flex min-h-[590px] flex-col px-0 pb-7 pt-16 md:pt-24">
+      {!isRoutes && <section className="route-panel flex flex-col px-0 pb-7 pt-16 md:pt-24">
         <RouteMark />
         <div className="flex-1">
           <p className="eyebrow mb-3 text-orange">Question {step + 1} of {questions.length}</p>
@@ -101,14 +100,14 @@ export function RouteOnboarding() {
             {question.options.map((option) => option === "Add Your Own Response" ? (
               <div key={option}>
                 <button type="button" onClick={chooseCustomResponse} className={`route-option ${customResponseOpen ? "route-option-active" : ""}`}><span className="mr-3 inline-block h-3 w-3 rounded-full border border-ink/70" />{option}</button>
-                {customResponseOpen && <input autoFocus value={answers[step] ?? ""} onChange={(event) => chooseAnswer(event.target.value)} className="mt-2 w-full rounded-[10px] border border-orange bg-transparent px-4 py-3 text-sm outline-none placeholder:text-ink/45 focus:ring-2 focus:ring-orange/25" placeholder="Write your response..." aria-label="Your own response" />}
+                {customResponseOpen && <input value={answers[step] ?? ""} onChange={(event) => chooseAnswer(event.target.value)} className="mt-2 w-full rounded-[10px] border border-orange bg-transparent px-4 py-3 text-sm outline-none placeholder:text-ink/45 focus:ring-2 focus:ring-orange/25" placeholder="Write your response..." aria-label="Your own response" />}
               </div>
             ) : <button type="button" key={option} onClick={() => { setCustomResponseOpen(false); chooseAnswer(option); }} className={`route-option ${answers[step] === option ? "route-option-active" : ""}`}><span className="mr-3 inline-block h-3 w-3 rounded-full border border-ink/70" />{option}</button>)}
           </div>
         </div>
         <div className="flex items-center justify-between text-[10px] text-orange"><button onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; back</button><button className="rounded-full bg-orange px-7 py-2 text-white" onClick={() => setStep(step + 1)}>Continue</button></div>
       </section>}
-      {isRoutes && routeChoices.map((route, index) => <section key={route.city} className={`route-panel flex min-h-[590px] flex-col px-0 pb-7 pt-16 transition-shadow ${selected === route.city ? "route-panel-selected" : ""}`}>
+      {isRoutes && routeChoices.map((route, index) => <section key={route.city} className={`route-panel flex flex-col px-0 pb-7 pt-16 transition-shadow ${selected === route.city ? "route-panel-selected" : ""}`}>
         <RouteMark />
         <div className="flex-1">
           <h2 className="max-w-[190px] text-xl font-bold leading-tight tracking-[-.04em]">{route.city}</h2>
