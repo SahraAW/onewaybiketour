@@ -6,7 +6,7 @@
 
 :root {
   --paper: #d9d9d9;
-  --ink: #202020;
+  --ink: #000000;
   --orange: #f55a00;
   --muted: #626262;
 }
@@ -312,6 +312,9 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .carousel-dots button.active { width: 1.6rem; background: var(--orange); }
 .recommendations-page { overflow: hidden; }
 .booking-summary { min-width: 0; }
+
+a.bg-orange,
+button.bg-orange { border-radius: 20px !important; }
 
 /* Use the same black border treatment across every component and state. */
 *, *::before, *::after { border-color: #000000 !important; }
