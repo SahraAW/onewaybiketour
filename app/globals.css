@@ -234,7 +234,9 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
     gap: .25rem;
     font-size: .5rem;
     letter-spacing: .04em;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
+    overflow-wrap: anywhere;
   }
   .booking-progress-number {
     width: 1.4rem;

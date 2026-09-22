@@ -111,7 +111,7 @@ export function RouteOnboarding() {
         <RouteMark />
         <div className="flex-1">
           <h2 className="max-w-[190px] text-xl font-bold leading-tight tracking-[-.04em]">{route.city}</h2>
-          <button type="button" onClick={() => setSelected(route.city)} className="route-photo mt-3 block w-full text-left" style={{ backgroundImage: `url("${route.image}")` }} aria-label={`Choose ${route.city} cycling route`}><span className="absolute left-[-17px] top-1/2 text-orange" aria-hidden="true">‹</span><span className="absolute right-[-17px] top-1/2 text-orange" aria-hidden="true">›</span></button>
+          <button type="button" onClick={() => setSelected(route.city)} className="route-photo mt-3 block w-full text-left" style={{ backgroundImage: `url("${route.image}")` }} aria-label={`Choose ${route.city} cycling route`}><span className="absolute left-2 top-1/2 -translate-y-1/2 text-orange" aria-hidden="true">‹</span><span className="absolute right-2 top-1/2 -translate-y-1/2 text-orange" aria-hidden="true">›</span></button>
           <p className="mt-2 text-[8px] text-orange">{route.caption}</p>
           <button onClick={() => setStep(questions.length - 1)} className="mt-5 text-[10px] text-orange">‹&nbsp; back</button>
         </div>
