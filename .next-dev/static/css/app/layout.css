@@ -589,9 +589,6 @@ video {
 .mb-8{
   margin-bottom: 2rem;
 }
-.ml-1{
-  margin-left: 0.25rem;
-}
 .ml-3{
   margin-left: 0.75rem;
 }
@@ -679,17 +676,14 @@ video {
 .max-h-\[min\(88vh\2c 760px\)\]{
   max-height: min(88vh, 760px);
 }
+.min-h-10{
+  min-height: 2.5rem;
+}
 .min-h-11{
   min-height: 2.75rem;
 }
 .min-h-12{
   min-height: 3rem;
-}
-.min-h-14{
-  min-height: 3.5rem;
-}
-.min-h-16{
-  min-height: 4rem;
 }
 .min-h-\[470px\]{
   min-height: 470px;
@@ -743,8 +737,8 @@ video {
 .max-w-\[190px\]{
   max-width: 190px;
 }
-.max-w-\[540px\]{
-  max-width: 540px;
+.max-w-\[320px\]{
+  max-width: 320px;
 }
 .max-w-\[650px\]{
   max-width: 650px;
@@ -837,13 +831,6 @@ video {
 .gap-8{
   gap: 2rem;
 }
-.gap-x-5{
-  -moz-column-gap: 1.25rem;
-       column-gap: 1.25rem;
-}
-.gap-y-3{
-  row-gap: 0.75rem;
-}
 .space-y-2 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -885,6 +872,9 @@ video {
 .rounded-\[10px\]{
   border-radius: 10px;
 }
+.rounded-\[20px\]{
+  border-radius: 20px;
+}
 .rounded-\[2rem\]{
   border-radius: 2rem;
 }
@@ -893,6 +883,9 @@ video {
 }
 .rounded-full{
   border-radius: 9999px;
+}
+.rounded-lg{
+  border-radius: 0.5rem;
 }
 .border{
   border-width: 1px;
@@ -909,6 +902,10 @@ video {
 }
 .border-dashed{
   border-style: dashed;
+}
+.border-black{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
 }
 .border-ink{
   border-color: var(--ink);
@@ -995,6 +992,10 @@ video {
   padding-left: 0px;
   padding-right: 0px;
 }
+.px-3{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1053,9 +1054,6 @@ video {
 }
 .pb-10{
   padding-bottom: 2.5rem;
-}
-.pb-16{
-  padding-bottom: 4rem;
 }
 .pb-20{
   padding-bottom: 5rem;
@@ -1261,7 +1259,7 @@ video {
 
 :root {
   --paper: #d9d9d9;
-  --ink: #202020;
+  --ink: #000000;
   --orange: #f55a00;
   --muted: #626262;
 }
@@ -1291,6 +1289,30 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .display { letter-spacing: -.035em; line-height: .98; }
 .eyebrow { letter-spacing: .12em; text-transform: uppercase; font-size: 10px; }
 .orange-line { color: var(--orange); }
+.navigation-steps {
+  width: min(100%, 40rem);
+  margin: 2rem auto 0;
+  padding: .5rem 1.25rem;
+}
+.navigation-steps img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.navigation-steps-fallback {
+  width: min(100% - 2.5rem, 40rem);
+  margin: .5rem auto;
+  color: var(--orange);
+  font-size: .7rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+.navigation-page-step {
+  width: min(42vw, 30rem);
+  margin: 0 auto;
+}
 .route-draw {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -1333,11 +1355,12 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   width: 100%;
   min-width: 0;
   border: 1px solid rgba(32,32,32,.28);
-  border-radius: 10px;
-  padding: 8px 12px;
+  border-radius: 20px;
+  padding: 14px 16px;
   text-align: left;
-  font-size: 9px;
+  font-size: .875rem;
   line-height: 1.4;
+  min-height: 54px;
   overflow-wrap: anywhere;
   transition: background-color .2s, border-color .2s;
 }
@@ -1443,7 +1466,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   transition: transform .2s, background-color .2s, color .2s;
 }
 .calendar-day-premium { background: var(--orange); color: white; }
-.calendar-day-value { background: rgba(245,90,0,.2); }
+.calendar-day-value { background: #FFE787; color: var(--ink); }
 .calendar-day-standard { background: transparent; }
 .calendar-day:not(:disabled):hover { transform: translateY(-2px); }
 .calendar-day-selected { outline: 2px solid var(--ink); outline-offset: 3px; }
@@ -1452,7 +1475,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .calendar-legend span { display: inline-flex; align-items: center; gap: .4rem; }
 .calendar-dot { display: inline-block; width: .65rem; height: .65rem; border-radius: 999px; }
 .calendar-dot-premium { background: var(--orange); }
-.calendar-dot-value { background: rgba(245,90,0,.2); }
+.calendar-dot-value { background: #FFE787; }
 .calendar-dot-standard { border: 1px solid var(--ink); }
 .booking-progress {
   display: grid;
@@ -1529,7 +1552,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .bike-carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
 .bike-carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.3); transition: width .2s, background-color .2s; }
 .bike-carousel-dots button.active { width: 1.6rem; background: var(--orange); }
-.bike-detail-image { min-height: clamp(16rem, 42vw, 34rem); border-radius: 1.75rem; background-position: center; background-size: cover; }
+.bike-detail-image { min-height: clamp(16rem, 42vw, 34rem); overflow: hidden; border-radius: 1.75rem; background: var(--paper); }
 .bike-size { min-width: 3.5rem; border: 1px solid rgba(32,32,32,.35); border-radius: 10px; padding: .6rem 1rem; font-size: .75rem; transition: border-color .2s, background-color .2s; }
 .bike-size.selected, .bike-size:hover { border-color: var(--orange); background: rgba(245,90,0,.1); }
 .tour-carousel { width: 100%; min-width: 0; touch-action: pan-y; }
@@ -1546,6 +1569,12 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .carousel-dots button.active { width: 1.6rem; background: var(--orange); }
 .recommendations-page { overflow: hidden; }
 .booking-summary { min-width: 0; }
+
+a.bg-orange,
+button.bg-orange { border-radius: 20px !important; }
+
+/* Use the same black border treatment across every component and state. */
+*, *::before, *::after { border-color: #000000 !important; }
 
 /* Keep legacy page utility colors aligned with the new design tokens. */
 .bg-\[\#dedad6\] { background-color: var(--paper) !important; }
@@ -1568,7 +1597,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   .route-panel { min-height: calc(100svh - 100px); padding-top: 2rem; }
   .route-panel.flex { padding-inline: 0; }
   .route-card-footer { margin-inline: 0 !important; padding-inline: 0; }
-  .route-panel h1 { margin-bottom: 1.5rem; font-size: clamp(1.35rem, 5.6vw, 1.75rem); line-height: 1.2; }
+  .route-panel h1 { margin-bottom: 0; font-size: clamp(1.875rem, 7vw, 3rem); line-height: 1.15; }
   .route-panel .eyebrow { margin-bottom: .75rem; font-size: .68rem; }
   .route-option { min-height: 54px; padding: 14px 16px; font-size: .86rem; line-height: 1.4; }
   .route-option span { width: .8rem; height: .8rem; margin-right: .55rem; vertical-align: middle; }
@@ -1639,6 +1668,11 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.hover\:border-black:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
+}
+
 .hover\:border-orange:hover{
   border-color: var(--orange);
 }
@@ -1648,8 +1682,17 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   background-color: rgb(217 79 0 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-orange:hover{
+  background-color: var(--orange);
+}
+
 .hover\:text-orange:hover{
   color: var(--orange);
+}
+
+.hover\:text-white:hover{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .focus\:border-orange:focus{
@@ -1822,15 +1865,6 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 
   .md\:pt-20{
     padding-top: 5rem;
-  }
-
-  .md\:pt-24{
-    padding-top: 6rem;
-  }
-
-  .md\:text-2xl{
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   .md\:text-5xl{
