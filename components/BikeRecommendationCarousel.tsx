@@ -22,16 +22,16 @@ export function BikeRecommendationCarousel({ recommendations }: Readonly<{ recom
     <div className="carousel-stage">
       <button type="button" onClick={() => move(-1)} className="carousel-arrow" aria-label="Previous bike recommendation">‹</button>
       <div className="carousel-card">
-        <article className="recommendation-card bike-recommendation-card overflow-hidden rounded-[1.5rem] border border-ink/15 bg-white/30">
+        <article className="recommendation-card bike-recommendation-card">
           <div className="relative aspect-[4/3] w-full">
             <img src={bike.image} alt={`${bike.name} cycling bike`} className="absolute inset-0 h-full w-full object-cover" />
           </div>
-          <div className="recommendation-card-content min-w-0 p-5 md:p-7">
+          <div className="recommendation-card-content min-w-0">
             <p className="eyebrow text-orange">{bike.type} / {score}% match</p>
             <h2 className="mt-2 break-words text-2xl font-bold">{bike.name}</h2>
             <p className="mt-3 break-words text-sm leading-relaxed text-ink/60">{bike.description}</p>
             <p className="recommendation-reason mt-4 break-words text-xs font-bold text-orange">Why it matches: {reasons.join(" · ")}</p>
-            <Link href={`/bike/${bike.id}`} className="mt-5 inline-flex min-h-11 w-fit items-center rounded-full border border-ink/25 px-5 py-2.5 text-xs font-bold hover:border-orange hover:text-orange">View bike ↗</Link>
+            <Link href={`/bike/${bike.id}`} className="mt-5 inline-flex min-h-11 w-fit items-center border-b border-ink/35 py-2.5 text-xs font-bold hover:border-orange hover:text-orange">View bike ↗</Link>
           </div>
         </article>
       </div>
