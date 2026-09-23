@@ -5,13 +5,15 @@
 @tailwind utilities;
 
 :root {
-  --paper: #f1eee9;
-  --paper-strong: #e7e1db;
+  --paper: #d9d9d9;
+  --paper-strong: #ffffff;
   --ink: #000000;
   --ink-soft: rgba(0, 0, 0, 0.62);
   --orange: #f55a00;
   --orange-soft: rgba(245, 90, 0, 0.12);
-  --muted: #626262;
+  --yellow: #ffe787;
+  --white: #ffffff;
+  --muted: rgba(0, 0, 0, 0.62);
   --cheap: #ffe787;
 }
 
@@ -36,15 +38,16 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   position: relative;
   isolation: isolate;
 }
-.display { letter-spacing: -.035em; line-height: .98; }
+.display { letter-spacing: -.035em; line-height: .98; font-weight: 600; }
 .eyebrow {
   letter-spacing: .12em;
   text-transform: uppercase;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--orange);
 }
 .orange-line { color: var(--orange); }
+h1, h2, h3 { font-weight: 600; }
 
 :focus-visible {
   outline: 2px solid var(--orange);
@@ -231,7 +234,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   transition: transform .2s, background-color .2s, color .2s;
 }
 .calendar-day-premium { background: var(--orange); color: white; }
-.calendar-day-value { background: #FFE787; color: var(--ink); }
+.calendar-day-value { background: var(--yellow); color: var(--ink); }
 .calendar-day-standard { background: transparent; }
 .calendar-day:not(:disabled):hover { transform: translateY(-2px); }
 .calendar-day-selected { outline: 2px solid var(--ink); outline-offset: 3px; }
@@ -240,7 +243,7 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
 .calendar-legend span { display: inline-flex; align-items: center; gap: .4rem; }
 .calendar-dot { display: inline-block; width: .65rem; height: .65rem; border-radius: 999px; }
 .calendar-dot-premium { background: var(--orange); }
-.calendar-dot-value { background: #FFE787; }
+.calendar-dot-value { background: var(--yellow); }
 .calendar-dot-standard { border: 1px solid var(--ink); }
 .booking-progress {
   display: grid;
@@ -355,7 +358,9 @@ button.bg-orange { border-radius: 20px !important; }
 
 
 @media (max-width: 640px) {
-  .display { letter-spacing: -.065em; }
+  .display { letter-spacing: -.065em; font-size: clamp(3rem, 14vw, 6rem); overflow-wrap: anywhere; }
+  main, section, article, header, footer { min-width: 0; }
+  img, svg { max-width: 100%; }
   .route-flow-content { grid-template-columns: 1fr; min-height: auto; align-items: start; padding-inline: 1rem; padding-top: .5rem; }
   .route-flow > header { padding-inline: 16px; }
   .route-flow > div { padding-inline: 12px; }
@@ -365,7 +370,7 @@ button.bg-orange { border-radius: 20px !important; }
   .route-panel h1 { margin-bottom: 0; font-size: clamp(1.875rem, 7vw, 3rem); line-height: 1.15; }
   .route-panel .eyebrow { margin-bottom: .75rem; font-size: .68rem; }
   .route-option { min-height: 54px; padding: 14px 16px; font-size: .86rem; line-height: 1.4; }
-  .route-option span { width: .8rem; height: .8rem; margin-right: .55rem; vertical-align: middle; }
+  .route-option-marker { width: .8rem; height: .8rem; margin-right: .55rem; vertical-align: middle; }
   .route-photo { height: min(58svh, 360px); min-height: 220px; }
   .route-flow .route-panel.flex.pt-24 { padding-top: 2rem; }
   .route-flow .route-panel.flex.pt-28 { padding-top: 2rem; }

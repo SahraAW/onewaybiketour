@@ -102,14 +102,14 @@ export function RouteOnboarding() {
             {question.options.map((option) => option === "Add Your Own Response" ? (
               <div key={option}>
                 <button type="button" onClick={chooseCustomResponse} className={`route-option ${customResponseOpen ? "route-option-active" : ""}`}>
-                  <span className={`mr-4 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-black ${customResponseOpen ? "bg-orange" : "bg-transparent"}`} />
-                  {option}
+                  <span className={`route-option-marker mr-4 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-black ${customResponseOpen ? "bg-orange" : "bg-transparent"}`} />
+                  <span className="font-normal">{option}</span>
                 </button>
                 {customResponseOpen && <input value={answers[step] ?? ""} onChange={(event) => chooseAnswer(event.target.value)} className="mt-2 w-full rounded-[10px] border border-orange bg-transparent px-4 py-3 text-sm outline-none placeholder:text-ink/45 focus:ring-2 focus:ring-orange/25" placeholder="Write your response..." aria-label="Your own response" />}
               </div>
             ) : <button type="button" key={option} onClick={() => { setCustomResponseOpen(false); chooseAnswer(option); }} className={`route-option ${answers[step] === option ? "route-option-active" : ""}`}>
-              <span className={`mr-4 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-black ${answers[step] === option ? "bg-orange" : "bg-transparent"}`} />
-              {option}
+              <span className={`route-option-marker mr-4 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-black ${answers[step] === option ? "bg-orange" : "bg-transparent"}`} />
+              <span className="font-normal">{option}</span>
             </button>)}
           </div>
         </div>

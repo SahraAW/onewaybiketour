@@ -9,7 +9,7 @@ export function BookingOption({ selected, title, description, meta, onClick }: R
         <span className="flex min-w-0 items-start gap-3 break-words">
           <span aria-hidden="true" className={`mt-1 h-3 w-3 shrink-0 rounded-full border border-ink/70 ${selected ? "bg-orange" : "bg-transparent"}`} />
           <span className="min-w-0">
-            <strong className="block text-sm font-bold text-black">{title}</strong>
+            <strong className="block text-sm font-normal text-black">{title}</strong>
             {description && <span className="mt-1 block break-words text-xs leading-relaxed text-ink/55">{description}</span>}
           </span>
         </span>
