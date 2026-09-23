@@ -1,7 +1,5 @@
-import Link from "next/link";
-import { Button } from "@/components/Button";
-import { Logo } from "@/components/Logo";
+import { LoginForm } from "@/components/AuthForms";
 
 export default function LoginPage() {
-  return <main className="grain flex min-h-screen items-center justify-center bg-[#dedad6] px-5 py-10"><div className="w-full max-w-md"><Logo /><div className="mt-20 rounded-[2rem] bg-paper p-7 shadow-sm md:p-12"><p className="eyebrow mb-5 text-orange">Welcome back</p><h1 className="display text-6xl font-bold">Log in<span className="text-orange">.</span></h1><form className="mt-10 space-y-5"><label className="block text-xs font-bold">Email<input type="email" required className="mt-2 w-full rounded-full border border-ink/20 bg-transparent px-5 py-3 outline-none transition-colors focus:border-orange" placeholder="you@example.com" /></label><label className="block text-xs font-bold">Password<input type="password" required className="mt-2 w-full rounded-full border border-ink/20 bg-transparent px-5 py-3 outline-none transition-colors focus:border-orange" placeholder="••••••••" /></label><Button type="submit">Log in <span className="ml-3">↗</span></Button></form><p className="mt-8 text-xs text-ink/60">New here? <Link href="/register" className="font-bold text-orange">Create an account</Link></p></div><Link href="/" className="mt-7 block text-center text-xs font-bold">← Back home</Link></div></main>;
+  return <LoginForm />;
 }

@@ -6,8 +6,11 @@ const config: Config = {
     extend: {
       colors: {
         paper: "var(--paper)",
+        "paper-strong": "var(--paper-strong)",
         ink: "var(--ink)",
-        orange: "var(--orange)"
+        orange: "var(--orange)",
+        yellow: "var(--yellow)",
+        white: "var(--white)"
       }
     }
   },

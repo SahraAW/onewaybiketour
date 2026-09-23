@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Logo } from "./Logo";
+import { FaqDialog } from "./FaqDialog";
+import { NavigationSteps } from "./NavigationSteps";
 
 type RouteChoice = {
   city: string;
@@ -66,36 +68,58 @@ function MiniRoute() {
 }
 
 export function RouteOnboarding() {
+  const router = useRouter();
   const [selected, setSelected] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [customResponseOpen, setCustomResponseOpen] = useState(false);
   const [step, setStep] = useState(0);
   const question = questions[step];
   const isRoutes = step === questions.length;
   const chooseAnswer = (answer: string) => setAnswers((current) => ({ ...current, [step]: answer }));
+  const chooseCustomResponse = () => {
+    setCustomResponseOpen(true);
+    chooseAnswer("");
+  };
+  useEffect(() => setCustomResponseOpen(false), [step]);
+  useEffect(() => {
+    if (isRoutes) {
+      window.localStorage.setItem("one-way-bike-tours-preferences", JSON.stringify({ answers, route: selected }));
+      router.push("/recommendations");
+    }
+  }, [answers, isRoutes, router, selected]);
   return <main className="route-flow grain min-h-screen bg-[#e8e5e2]">
     <header className="flex items-center justify-between px-5 py-6 md:px-10">
       <Logo />
-      <span className="text-xs">◎</span>
+      <FaqDialog />
     </header>
-    <div className={`mx-auto grid max-w-7xl gap-4 px-3 pb-8 ${!isRoutes ? "md:max-w-[440px]" : "md:grid-cols-3"}`}>
-      {!isRoutes && <section className="route-panel flex min-h-[590px] flex-col px-8 pb-7 pt-28 md:px-9">
+    <div className={`route-flow-content mx-auto grid w-full gap-4 px-[clamp(1.25rem,6vw,7rem)] pb-8 ${!isRoutes ? "max-w-3xl" : "md:grid-cols-3"}`}>
+      {!isRoutes && <section className="route-panel flex flex-col px-0 pb-7 pt-8 md:pt-16">
         <RouteMark />
         <div className="flex-1">
-          <p className="eyebrow mb-2 text-[8px]">Personal questions</p>
-          <h1 className="mb-7 text-xs font-normal">{question.title}</h1>
-          <div className="space-y-2">
-            {question.options.map((option) => <button key={option} onClick={() => chooseAnswer(option)} className={`route-option ${answers[step] === option ? "route-option-active" : ""}`}><span className="mr-2 inline-block h-2 w-2 rounded-full border border-ink/70" />{option}</button>)}
+          <p className="question-eyebrow eyebrow text-orange">Personal questions / Question {step + 1} of {questions.length}</p>
+          <h1 className="question-title mt-5 max-w-xl text-3xl font-semibold leading-tight md:text-5xl">{question.title}</h1>
+          <div className="question-options mt-8 grid gap-3">
+            {question.options.map((option) => option === "Add Your Own Response" ? (
+              <div key={option}>
+                <button type="button" onClick={chooseCustomResponse} className={`route-option ${customResponseOpen ? "route-option-active" : ""}`}>
+                  <span className={`route-option-marker mr-4 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-black ${customResponseOpen ? "bg-orange" : "bg-transparent"}`} />
+                  <span className="font-normal">{option}</span>
+                </button>
+                {customResponseOpen && <input value={answers[step] ?? ""} onChange={(event) => chooseAnswer(event.target.value)} className="mt-2 w-full rounded-[10px] border border-orange bg-transparent px-4 py-3 text-sm outline-none placeholder:text-ink/45 focus:ring-2 focus:ring-orange/25" placeholder="Write your response..." aria-label="Your own response" />}
+              </div>
+            ) : <button type="button" key={option} onClick={() => { setCustomResponseOpen(false); chooseAnswer(option); }} className={`route-option ${answers[step] === option ? "route-option-active" : ""}`}>
+              <span className={`route-option-marker mr-4 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-black ${answers[step] === option ? "bg-orange" : "bg-transparent"}`} />
+              <span className="font-normal">{option}</span>
+            </button>)}
           </div>
-          <button className="mt-7 block ml-auto text-[10px] text-ink/70">Skip <span className="ml-1">›</span></button>
         </div>
-        <div className="flex items-center justify-between text-[10px] text-orange"><button onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; back</button><button className="rounded-full bg-orange px-7 py-2 text-white" onClick={() => setStep(step + 1)}>Continue</button></div>
-        <div className="mt-14"><MiniRoute /></div>
+        <div className="question-actions mt-8 flex flex-wrap items-center justify-between gap-4"><button type="button" className="min-h-11 text-sm font-bold text-orange" onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; Back</button><button type="button" className="min-h-11 rounded-[20px] bg-orange px-7 py-3 text-sm font-bold text-white" onClick={() => setStep(step + 1)}>Continue</button></div>
       </section>}
-      {isRoutes && routeChoices.map((route, index) => <section key={route.city} className={`route-panel flex min-h-[590px] flex-col px-10 pb-7 pt-24 transition-shadow ${selected === route.city ? "ring-2 ring-orange" : ""}`}>
+      {isRoutes && routeChoices.map((route, index) => <section key={route.city} className={`route-panel flex flex-col px-0 pb-7 pt-16 transition-shadow ${selected === route.city ? "route-panel-selected" : ""}`}>
         <RouteMark />
         <div className="flex-1">
           <h2 className="max-w-[190px] text-xl font-bold leading-tight tracking-[-.04em]">{route.city}</h2>
-          <div className="route-photo mt-3" style={{ backgroundImage: `url("${route.image}")` }} role="img" aria-label={`${route.city} cycling route`}><button className="absolute left-[-17px] top-1/2 text-orange" aria-label="Previous image">‹</button><button className="absolute right-[-17px] top-1/2 text-orange" aria-label="Next image">›</button></div>
+          <button type="button" onClick={() => setSelected(route.city)} className="route-photo mt-3 block w-full text-left" style={{ backgroundImage: `url("${route.image}")` }} aria-label={`Choose ${route.city} cycling route`}><span className="absolute left-2 top-1/2 -translate-y-1/2 text-orange" aria-hidden="true">‹</span><span className="absolute right-2 top-1/2 -translate-y-1/2 text-orange" aria-hidden="true">›</span></button>
           <p className="mt-2 text-[8px] text-orange">{route.caption}</p>
           <button onClick={() => setStep(questions.length - 1)} className="mt-5 text-[10px] text-orange">‹&nbsp; back</button>
         </div>
@@ -104,5 +128,6 @@ export function RouteOnboarding() {
         </div>}
       </section>)}
     </div>
+    <NavigationSteps step={2} />
   </main>;
 }

@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --paper: #e8e5e2;
-  --ink: #252525;
-  --orange: #f45112;
-  --muted: #77736f;
+  --paper: #d9d9d9;
+  --paper-strong: #ffffff;
+  --ink: #000000;
+  --ink-soft: rgba(0, 0, 0, 0.62);
+  --orange: #f55a00;
+  --orange-soft: rgba(245, 90, 0, 0.12);
+  --yellow: #ffe787;
+  --white: #ffffff;
+  --muted: rgba(0, 0, 0, 0.62);
+  --cheap: #ffe787;
 }
 
 * { box-sizing: border-box; }
@@ -16,30 +24,59 @@ body {
   min-width: 320px;
   background: var(--paper);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 html, body { overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
-button, input { font: inherit; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+input, textarea, select { color: var(--ink); }
+input::placeholder { color: rgba(32, 32, 32, .42); }
 
 .grain {
   position: relative;
   isolation: isolate;
 }
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  opacity: .15;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+.display { letter-spacing: -.035em; line-height: .98; font-weight: 600; }
+.eyebrow {
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--orange);
 }
-.display { letter-spacing: -.075em; line-height: .84; }
-.eyebrow { letter-spacing: .12em; text-transform: uppercase; font-size: 10px; }
 .orange-line { color: var(--orange); }
+h1, h2, h3 { font-weight: 600; }
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+.navigation-steps {
+  width: min(100%, 40rem);
+  margin: 2rem auto 0;
+  padding: .5rem 1.25rem;
+}
+.navigation-steps img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.navigation-steps-fallback {
+  width: min(100% - 2.5rem, 40rem);
+  margin: .5rem auto;
+  color: var(--orange);
+  font-size: .7rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+.navigation-page-step {
+  width: min(42vw, 30rem);
+  margin: 0 auto;
+}
 .route-draw {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -48,34 +85,63 @@ button, input { font: inherit; }
 @keyframes route-draw { to { stroke-dashoffset: 0; } }
 .route-panel {
   position: relative;
-  overflow: hidden;
-  background: #dcdcdc;
+  overflow: visible;
+  background: transparent;
   min-width: 0;
+}
+.route-flow {
+  min-height: 100svh;
+  background: var(--paper);
+}
+.route-flow > header {
+  min-height: 82px;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+.route-flow-content {
+  min-height: calc(100svh - 82px);
+  align-items: center;
+  padding-top: clamp(2rem, 8vh, 7rem);
+}
+.route-panel-selected {
+  outline: 2px solid var(--orange);
+  outline-offset: 10px;
 }
 .route-card-footer {
   position: relative;
-  background: #dcdcdc;
+  background: transparent;
+  margin-top: auto;
 }
 .route-card-footer::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 26px;
-  background: linear-gradient(90deg, #5a5a5a, #d7d7d7 45%, #686868);
-  opacity: .55;
-  filter: grayscale(1);
+  display: none;
 }
 .route-option {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
-  border: 1px solid rgba(37,37,37,.65);
+  min-width: 0;
+  border: 1.5px solid rgba(0, 0, 0, 0.85);
   border-radius: 999px;
-  padding: 5px 10px;
+  padding: 1rem 1.25rem;
   text-align: left;
-  font-size: 9px;
-  transition: background-color .2s, border-color .2s;
+  font-size: clamp(1.15rem, 2vw, 2.2rem);
+  line-height: 1.2;
+  min-height: 64px;
+  overflow-wrap: anywhere;
+  background: transparent;
+  color: var(--ink);
+  transition: border-color .2s ease, background-color .2s ease;
 }
-.route-option:hover, .route-option-active { border-color: var(--orange); background: rgba(244,81,18,.08); }
+.route-option:hover { border-color: rgba(0, 0, 0, 0.9); }
+.route-option-active {
+  border-color: rgba(0, 0, 0, 0.9);
+  background: transparent;
+}
+.route-option:focus-visible,
+.route-photo:focus-visible,
+.route-panel button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
 .route-photo {
   position: relative;
   height: clamp(210px, 30vw, 300px);
@@ -87,19 +153,233 @@ button, input { font: inherit; }
   position: relative;
   z-index: 1;
 }
+.calendar-screen {
+  width: min(100%, 42rem);
+  min-width: 0;
+  margin-inline: auto;
+  color: var(--ink);
+}
+.calendar-pickup {
+  width: 100%;
+}
+.calendar-chevron {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: .5;
+  transform: translateY(-.15rem);
+}
+.calendar-round-button {
+  display: grid;
+  width: clamp(3.25rem, 12vw, 4.25rem);
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: background-color .2s, color .2s;
+}
+.calendar-round-button:hover,
+.calendar-round-button:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+.calendar-slider {
+  display: block;
+  width: 100%;
+  height: 2.1rem;
+  appearance: none;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--orange) 0 12%, transparent 12% 100%);
+  cursor: pointer;
+}
+.calendar-slider::-webkit-slider-thumb {
+  width: 0;
+  height: 0;
+  appearance: none;
+}
+.calendar-slider::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border: 0;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: clamp(.35rem, 1.8vw, 1rem) clamp(.2rem, 1.2vw, .65rem);
+  align-items: center;
+}
+.calendar-weekday {
+  color: var(--muted);
+  font-size: .7rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+.calendar-day {
+  display: grid;
+  width: 100%;
+  max-width: 3.5rem;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  color: var(--ink);
+  font-size: clamp(.9rem, 2.5vw, 1.1rem);
+  transition: transform .2s, background-color .2s, color .2s;
+}
+.calendar-day-premium { background: var(--orange); color: white; }
+.calendar-day-value { background: var(--yellow); color: var(--ink); }
+.calendar-day-standard { background: transparent; }
+.calendar-day:not(:disabled):hover { transform: translateY(-2px); }
+.calendar-day-selected { outline: 2px solid var(--ink); outline-offset: 3px; }
+.calendar-day-disabled { color: rgba(37, 37, 37, .28); cursor: not-allowed; text-decoration: line-through; }
+.calendar-legend { display: flex; flex-wrap: wrap; gap: .8rem 1.25rem; color: var(--muted); font-size: .7rem; }
+.calendar-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.calendar-dot { display: inline-block; width: .65rem; height: .65rem; border-radius: 999px; }
+.calendar-dot-premium { background: var(--orange); }
+.calendar-dot-value { background: var(--yellow); }
+.calendar-dot-standard { border: 1px solid var(--ink); }
+.booking-progress {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-block: 1px solid rgba(37, 37, 37, .15);
+  padding-block: 1rem;
+}
+.booking-progress-step {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.booking-progress-number {
+  display: grid;
+  width: 1.65rem;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: .6rem;
+  letter-spacing: 0;
+}
+.booking-progress-complete { color: var(--orange); }
+.booking-progress-current { color: var(--ink); }
+.booking-progress-current .booking-progress-number { background: var(--orange); border-color: var(--orange); color: white; }
+.booking-progress-upcoming { color: rgba(37, 37, 37, .35); }
+.booking-progress-complete:hover { color: var(--ink); }
+@media (max-width: 480px) {
+  .booking-progress {
+    padding-block: .75rem;
+  }
+  .booking-progress-step {
+    gap: .25rem;
+    font-size: .5rem;
+    letter-spacing: .04em;
+    white-space: normal;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  .booking-progress-number {
+    width: 1.4rem;
+    font-size: .55rem;
+  }
+  .calendar-grid {
+    gap: .35rem .15rem;
+  }
+  .calendar-weekday {
+    font-size: .6rem;
+  }
+  .calendar-day {
+    font-size: .85rem;
+  }
+}
+.bike-carousel { width: 100%; touch-action: pan-y; }
+.bike-slide:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
+.bike-carousel-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: clamp(27rem, 48vw, 36rem); overflow: hidden; }
+.bike-slide { position: relative; z-index: 1; display: grid; width: min(100%, 42rem); min-width: 0; flex: 0 1 42rem; text-align: left; }
+.bike-slide:hover .bike-slide-image { transform: translateY(-3px); }
+.bike-slide-image { min-height: clamp(15rem, 38vw, 26rem); background-position: center; background-size: contain; background-repeat: no-repeat; transition: transform .2s; }
+.bike-carousel-peek { position: absolute; top: 10%; width: clamp(5rem, 14vw, 10rem); height: 70%; background-position: center; background-size: contain; background-repeat: no-repeat; opacity: .55; filter: grayscale(.2); }
+.bike-carousel-peek-left { left: -2rem; transform: translateX(-55%); }
+.bike-carousel-peek-right { right: -2rem; transform: translateX(55%); }
+.bike-slide-copy { display: grid; gap: .65rem; padding: clamp(1rem, 3vw, 2rem); }
+.bike-slide-copy h2 { font-size: clamp(1.7rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.06em; }
+.bike-slide-copy p:not(.eyebrow) { max-width: 34rem; color: rgba(37,37,37,.6); font-size: .9rem; line-height: 1.6; }
+.bike-slide-copy strong { color: var(--orange); font-size: .9rem; }
+.bike-arrow { position: relative; z-index: 2; display: grid; width: clamp(2.5rem, 7vw, 3.5rem); aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 0; color: var(--ink); font-size: 2rem; line-height: 1; transition: color .2s, transform .2s; }
+.bike-arrow:hover, .bike-arrow:focus-visible { background: transparent; color: var(--orange); transform: scale(1.15); }
+.bike-carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
+.bike-carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.3); transition: width .2s, background-color .2s; }
+.bike-carousel-dots button.active { width: 1.6rem; background: var(--orange); }
+.bike-detail-image { min-height: clamp(16rem, 42vw, 34rem); overflow: hidden; border-radius: 1.75rem; background: var(--paper); }
+.bike-size { min-width: 3.5rem; border: 1px solid rgba(32,32,32,.35); border-radius: 10px; padding: .6rem 1rem; font-size: .75rem; transition: border-color .2s, background-color .2s; }
+.bike-size.selected, .bike-size:hover { border-color: var(--orange); background: rgba(245,90,0,.1); }
+.tour-carousel { width: 100%; min-width: 0; touch-action: pan-y; }
+.carousel-stage { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.65rem, 2vw, 1rem); min-width: 0; overflow: hidden; }
+.carousel-card { min-width: 0; }
+.carousel-peek { position: absolute; top: 12%; width: clamp(5rem, 14vw, 10rem); height: 60%; background-position: center; background-size: cover; opacity: .28; pointer-events: none; }
+.carousel-peek-left { left: -4rem; }
+.carousel-peek-right { right: -4rem; }
+.recommendation-card h2,
+.recommendation-card p { overflow-wrap: anywhere; }
+.recommendation-card-content { display: flex; min-height: 14rem; flex-direction: column; align-items: flex-start; padding: clamp(1rem, 3vw, 2rem) 0; }
+.recommendation-card-content .recommendation-reason { margin-top: auto; }
+.carousel-arrow { display: grid; width: 2.8rem; aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 0; font-size: 1.8rem; line-height: 1; transition: color .2s, transform .2s; }
+.carousel-arrow:hover, .carousel-arrow:focus-visible { border-color: transparent; background: transparent; color: var(--orange); transform: scale(1.15); }
+.carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
+.carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.25); transition: width .2s, background-color .2s; }
+.carousel-dots button.active { width: 1.6rem; background: var(--orange); }
+.recommendations-page { overflow: hidden; }
+.booking-summary { min-width: 0; }
+
+a.bg-orange,
+button.bg-orange { border-radius: 20px !important; }
+
+/* Use the same black border treatment across every component and state. */
+*, *::before, *::after { border-color: #000000 !important; }
+
+/* Keep legacy page utility colors aligned with the new design tokens. */
+.bg-\[\#dedad6\] { background-color: var(--paper) !important; }
+.bg-\[\#dedad6\]\/50 { background-color: rgba(217, 217, 217, .5) !important; }
+.bg-\[\#e8e5e2\] { background-color: var(--paper) !important; }
+.rounded-\[2rem\] { border-radius: 16px !important; }
+.rounded-\[1\.75rem\] { border-radius: 16px !important; }
+.rounded-\[45\%\] { border-radius: 24% !important; }
+
+@media (max-width: 1023px) {
+  .booking-summary { position: static; }
+}
+
 
 @media (max-width: 640px) {
-  .display { letter-spacing: -.065em; }
-  .route-flow > div { grid-template-columns: 1fr; }
+  .display { letter-spacing: -.065em; font-size: clamp(3rem, 14vw, 6rem); overflow-wrap: anywhere; }
+  main, section, article, header, footer { min-width: 0; }
+  img, svg { max-width: 100%; }
+  .route-flow-content { grid-template-columns: 1fr; min-height: auto; align-items: start; padding-inline: 1rem; padding-top: .5rem; }
   .route-flow > header { padding-inline: 16px; }
   .route-flow > div { padding-inline: 12px; }
-  .route-panel { min-height: min(620px, calc(100svh - 92px)); }
-  .route-panel.flex { padding-inline: clamp(20px, 7vw, 32px); }
-  .route-card-footer { margin-inline: calc(clamp(20px, 7vw, 32px) * -1) !important; padding-inline: clamp(20px, 7vw, 32px); }
-  .route-option { min-height: 34px; padding: 7px 12px; font-size: 10px; }
+  .route-panel { min-height: calc(100svh - 100px); padding-top: 2rem; }
+  .route-panel.flex { padding-inline: 0; }
+  .route-card-footer { margin-inline: 0 !important; padding-inline: 0; }
+  .route-panel h1 { margin-bottom: 0; font-size: clamp(1.875rem, 7vw, 3rem); line-height: 1.15; }
+  .route-panel .eyebrow { margin-bottom: .75rem; font-size: .68rem; }
+  .route-option { min-height: 54px; padding: 14px 16px; font-size: .86rem; line-height: 1.4; }
+  .route-option-marker { width: .8rem; height: .8rem; margin-right: .55rem; vertical-align: middle; }
   .route-photo { height: min(58svh, 360px); min-height: 220px; }
-  .route-flow .route-panel.flex.pt-24 { padding-top: 76px; }
-  .route-flow .route-panel.flex.pt-28 { padding-top: 76px; }
+  .route-flow .route-panel.flex.pt-24 { padding-top: 2rem; }
+  .route-flow .route-panel.flex.pt-28 { padding-top: 2rem; }
   .route-flow .route-panel.flex.pb-7 { padding-bottom: 24px; }
   .route-flow .route-panel.flex .mt-14 { margin-top: 36px; }
   .route-flow .route-card-footer { margin-top: 28px !important; padding-bottom: 34px; }
@@ -108,17 +388,45 @@ button, input { font: inherit; }
   .route-flow .route-panel h2 { font-size: clamp(1.35rem, 7vw, 2rem); }
   .route-flow .route-panel > div.flex-1 { min-height: 0; }
   .route-flow .route-panel .absolute { max-width: calc(100% - 30px); }
+  .route-flow .route-panel > div:last-child { margin-top: 2rem; font-size: .78rem; }
+  .route-flow .route-panel > div:last-child button { min-height: 44px; font-size: .75rem; }
+  .calendar-screen { width: 100%; }
+  .calendar-month { margin-top: 3.5rem; }
+  .calendar-day { max-width: 3rem; }
+  .bike-carousel-stage { gap: .35rem; }
+  .bike-arrow { width: 2.4rem; font-size: 1.5rem; }
+  .bike-slide-image { min-height: 13rem; }
+  .bike-slide-copy { min-width: 0; }
+  .bike-slide-copy h2,
+  .bike-slide-copy p { overflow-wrap: anywhere; }
+  .recommendations-page { padding-top: 2rem; }
+  .recommendations-intro h1 { font-size: clamp(4rem, 19vw, 6rem); }
+  .recommendations-results { margin-top: 2.5rem; }
+  .carousel-stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: .75rem; }
+  .carousel-card { grid-column: 1 / -1; grid-row: 1; }
+  .carousel-arrow { width: 2.35rem; font-size: 1.45rem; }
+  .carousel-stage .carousel-arrow:first-child { grid-column: 1; grid-row: 2; justify-self: start; }
+  .carousel-stage .carousel-arrow:last-child { grid-column: 2; grid-row: 2; justify-self: end; }
+  .recommendation-card-content { min-height: 0; padding: 1.1rem; }
+  .recommendation-card-content h2 { font-size: 1.5rem; }
+  .recommendation-card-content .recommendation-reason { margin-top: 1rem; }
+  .booking-progress { gap: .2rem; }
+  .booking-progress-step { flex-direction: column; gap: .3rem; font-size: .5rem; letter-spacing: .06em; }
+  .booking-progress-number { width: 1.45rem; }
+}
+
+@media (max-width: 767px) {
+  .bike-detail-image { min-height: 0; aspect-ratio: 4 / 3; }
+  .route-flow-content .route-panel { min-height: calc(100svh - 100px); }
+  .route-flow-content .route-panel > div.flex-1 { min-height: 0; }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
-  .route-flow > div { grid-template-columns: minmax(300px, 420px); justify-content: center; }
-  .route-flow > div:has(.route-photo) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .route-flow-content { grid-template-columns: minmax(0, 1fr); }
+  .route-flow-content:has(.route-photo) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .route-flow .route-panel { min-height: 600px; }
 }
 
 @media (min-width: 1025px) {
-  .route-flow > div:has(.route-photo) { padding-inline: 20px; }
   .route-flow .route-panel { min-height: clamp(560px, 72vh, 700px); }
-  .route-flow .route-panel.flex { padding-inline: clamp(28px, 3vw, 48px); }
-  .route-flow .route-card-footer { margin-inline: calc(clamp(28px, 3vw, 48px) * -1) !important; padding-inline: clamp(28px, 3vw, 48px); }
 }
