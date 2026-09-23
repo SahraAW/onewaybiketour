@@ -76,13 +76,8 @@ export function RouteOnboarding() {
   const isRoutes = step === questions.length;
   const chooseAnswer = (answer: string) => setAnswers((current) => ({ ...current, [step]: answer }));
   const skipQuestion = () => {
-    setAnswers((current) => {
-      const next = { ...current };
-      delete next[step];
-      return next;
-    });
-    setCustomResponseOpen(false);
-    setStep((current) => current + 1);
+    window.localStorage.setItem("one-way-bike-tours-preferences", JSON.stringify({ answers, route: selected }));
+    router.push("/tours");
   };
   const chooseCustomResponse = () => {
     setCustomResponseOpen(true);

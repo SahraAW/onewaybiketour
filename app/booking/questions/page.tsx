@@ -43,9 +43,8 @@ export default function BookingQuestionsPage() {
     advanceQuestion(answers);
   };
   const skipQuestion = () => {
-    const nextAnswers = { ...answers, [question.key]: "" };
-    setAnswers(nextAnswers);
-    advanceQuestion(nextAnswers);
+    updateBooking({ bikePreferences: answers });
+    router.push("/bike-recommendations");
   };
   return <BookingLayout step="bike">
     <div className="booking-question-screen mx-auto w-full max-w-2xl rounded-[24px] bg-[#e8e5e2] p-4 md:p-6">
