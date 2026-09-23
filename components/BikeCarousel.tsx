@@ -32,8 +32,9 @@ export function BikeCarousel() {
       }}
     >
       <div className="bike-carousel-stage">
+        <div className="bike-carousel-peek bike-carousel-peek-left" aria-hidden="true" style={{ backgroundImage: `url("${bikes[(index - 1 + bikes.length) % bikes.length].image}")` }} />
         <button type="button" onClick={() => move(-1)} className="bike-arrow bike-arrow-left" aria-label="Previous bike">‹</button>
-        <button type="button" onClick={choose} onKeyDown={onKeyDown} className="bike-slide min-w-0" aria-label={`Choose ${bike.name}`}>
+        <button type="button" onClick={choose} onKeyDown={onKeyDown} className="bike-slide" aria-label={`Choose ${bike.name}`}>
           <div className="bike-slide-image" style={{ backgroundImage: `url("${bike.image}")` }} />
           <div className="bike-slide-copy">
             <p className="eyebrow text-orange">{index === 0 ? "Our suggestion" : bike.type}</p>
@@ -43,6 +44,7 @@ export function BikeCarousel() {
           </div>
         </button>
         <button type="button" onClick={() => move(1)} className="bike-arrow bike-arrow-right" aria-label="Next bike">›</button>
+        <div className="bike-carousel-peek bike-carousel-peek-right" aria-hidden="true" style={{ backgroundImage: `url("${bikes[(index + 1) % bikes.length].image}")` }} />
       </div>
       <div className="bike-carousel-dots" aria-label="Bike carousel navigation">
         {bikes.map((item, itemIndex) => (

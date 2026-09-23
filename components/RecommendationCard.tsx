@@ -5,11 +5,11 @@ export function RecommendationCard({ recommendation }: Readonly<{ recommendation
   const { tour, reasons } = recommendation;
   const reasonLabel = reasons.includes("A strong all-round route") ? reasons[0] : `Recommended for your ${reasons.join(" & ").toLowerCase()}`;
   return (
-    <article className="recommendation-card overflow-hidden rounded-[1.5rem] border border-ink/15 bg-white/30">
+    <article className="recommendation-card">
       <div className="recommendation-card-image relative aspect-[16/9] w-full">
         <img src={tour.image} alt={`${tour.name} cycling tour`} className="absolute inset-0 h-full w-full object-cover" />
       </div>
-      <div className="recommendation-card-content min-w-0 p-5 md:p-7">
+      <div className="recommendation-card-content min-w-0">
         <p className="eyebrow text-orange">{tour.start} → {tour.end}</p>
         <h2 className="mt-2 text-2xl font-bold tracking-[-.05em]">{tour.name}</h2>
         <p className="mt-3 text-sm leading-relaxed text-ink/60">{tour.description}</p>
