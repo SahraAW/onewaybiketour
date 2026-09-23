@@ -18,7 +18,7 @@ export function MapGraphic({ detail = false }: Readonly<{ detail?: boolean }>) {
   }
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full scale-150">
       <Image
         src={animationLogo}
         alt="Animated route marker"

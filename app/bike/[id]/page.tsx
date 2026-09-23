@@ -25,7 +25,7 @@ export default function BikeDetailPage() {
       <Link href="/booking/bike" className="text-sm font-medium text-orange">‹&nbsp; back to bikes</Link>
       <div className="mt-6 grid gap-10 md:grid-cols-[1.1fr_.9fr] md:items-center">
         <div className="bike-detail-image">
-          <img src={bike.image} alt={bike.name} className="h-full w-full object-cover" />
+          <img src={bike.image} alt={bike.name} className="h-full w-full object-contain" />
         </div>
         <div>
           <p className="eyebrow text-orange">Bike type / {bike.terrain}</p>
