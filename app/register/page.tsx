@@ -1,7 +1,5 @@
-import Link from "next/link";
-import { Button } from "@/components/Button";
-import { Logo } from "@/components/Logo";
+import { RegisterForm } from "@/components/AuthForms";
 
 export default function RegisterPage() {
-  return <main className="grain flex min-h-screen items-center justify-center bg-[#dedad6] px-5 py-10"><div className="w-full max-w-md"><Logo /><div className="mt-20 rounded-[2rem] bg-paper p-7 shadow-sm md:p-12"><p className="eyebrow mb-5 text-orange">Start your ride</p><h1 className="display text-6xl font-bold">Register<span className="text-orange">.</span></h1><form className="mt-10 space-y-5"><label className="block text-xs font-bold">Name<input type="text" required className="mt-2 w-full rounded-full border border-ink/20 bg-transparent px-5 py-3 outline-none focus:border-orange" placeholder="Your name" /></label><label className="block text-xs font-bold">Email<input type="email" required className="mt-2 w-full rounded-full border border-ink/20 bg-transparent px-5 py-3 outline-none focus:border-orange" placeholder="you@example.com" /></label><label className="block text-xs font-bold">Password<input type="password" required className="mt-2 w-full rounded-full border border-ink/20 bg-transparent px-5 py-3 outline-none focus:border-orange" placeholder="Create a password" /></label><Button type="submit">Create account <span className="ml-3">↗</span></Button></form><p className="mt-8 text-xs text-ink/60">Already a member? <Link href="/login" className="font-bold text-orange">Log in</Link></p></div><Link href="/" className="mt-7 block text-center text-xs font-bold">← Back home</Link></div></main>;
+  return <RegisterForm />;
 }
