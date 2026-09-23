@@ -1,4 +1,4 @@
-// File: /Users/serenacelli2/Downloads/one way bike tours/onewaybiketour/app/booking/bike/page.tsx
+// File: C:\Users\Sahra\OneDrive\Vedhæftede filer\Desktop\oneway\onewaybiketour\app\booking\bike\page.tsx
 import * as entry from '../../../../../app/booking/bike/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

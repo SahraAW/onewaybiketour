@@ -682,8 +682,8 @@ video {
 .h-8{
   height: 2rem;
 }
-.h-\[min\(390px\2c 82vw\)\]{
-  height: min(390px, 82vw);
+.h-\[min\(500px\2c 96vw\)\]{
+  height: min(500px, 96vw);
 }
 .h-auto{
   height: auto;
@@ -706,8 +706,8 @@ video {
 .min-h-12{
   min-height: 3rem;
 }
-.min-h-\[280px\]{
-  min-height: 280px;
+.min-h-\[340px\]{
+  min-height: 340px;
 }
 .min-h-\[470px\]{
   min-height: 470px;
@@ -1283,9 +1283,6 @@ video {
 .opacity-20{
   opacity: 0.2;
 }
-.opacity-\[0\.45\]{
-  opacity: 0.45;
-}
 .shadow-2xl{
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
@@ -1668,16 +1665,19 @@ h1, h2, h3 { font-weight: 600; }
 }
 .bike-carousel { width: 100%; touch-action: pan-y; }
 .bike-slide:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
-.bike-carousel-stage { position: relative; display: flex; align-items: center; gap: clamp(.5rem, 2vw, 1.5rem); }
-.bike-slide { display: grid; width: auto; min-width: 0; flex: 1 1 auto; overflow: hidden; border: 1px solid rgba(32,32,32,.16); border-radius: 16px; background: rgba(255,255,255,.3); text-align: left; transition: border-color .2s, transform .2s; }
-.bike-slide:hover { border-color: var(--orange); transform: translateY(-2px); }
-.bike-slide-image { min-height: clamp(15rem, 38vw, 26rem); background-position: center; background-size: cover; opacity: .38; }
+.bike-carousel-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: clamp(27rem, 48vw, 36rem); overflow: hidden; }
+.bike-slide { position: relative; z-index: 1; display: grid; width: min(100%, 42rem); min-width: 0; flex: 0 1 42rem; text-align: left; }
+.bike-slide:hover .bike-slide-image { transform: translateY(-3px); }
+.bike-slide-image { min-height: clamp(15rem, 38vw, 26rem); background-position: center; background-size: contain; background-repeat: no-repeat; transition: transform .2s; }
+.bike-carousel-peek { position: absolute; top: 10%; width: clamp(5rem, 14vw, 10rem); height: 70%; background-position: center; background-size: contain; background-repeat: no-repeat; opacity: .55; filter: grayscale(.2); }
+.bike-carousel-peek-left { left: -2rem; transform: translateX(-55%); }
+.bike-carousel-peek-right { right: -2rem; transform: translateX(55%); }
 .bike-slide-copy { display: grid; gap: .65rem; padding: clamp(1rem, 3vw, 2rem); }
 .bike-slide-copy h2 { font-size: clamp(1.7rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.06em; }
 .bike-slide-copy p:not(.eyebrow) { max-width: 34rem; color: rgba(37,37,37,.6); font-size: .9rem; line-height: 1.6; }
 .bike-slide-copy strong { color: var(--orange); font-size: .9rem; }
-.bike-arrow { display: grid; width: clamp(2.5rem, 7vw, 3.5rem); aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 1px solid var(--ink); border-radius: 999px; font-size: 2rem; line-height: 1; transition: background-color .2s, color .2s; z-index: 1; }
-.bike-arrow:hover, .bike-arrow:focus-visible { background: var(--orange); border-color: var(--orange); color: white; }
+.bike-arrow { position: relative; z-index: 2; display: grid; width: clamp(2.5rem, 7vw, 3.5rem); aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 0; color: var(--ink); font-size: 2rem; line-height: 1; transition: color .2s, transform .2s; }
+.bike-arrow:hover, .bike-arrow:focus-visible { background: transparent; color: var(--orange); transform: scale(1.15); }
 .bike-carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
 .bike-carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.3); transition: width .2s, background-color .2s; }
 .bike-carousel-dots button.active { width: 1.6rem; background: var(--orange); }
@@ -1685,14 +1685,17 @@ h1, h2, h3 { font-weight: 600; }
 .bike-size { min-width: 3.5rem; border: 1px solid rgba(32,32,32,.35); border-radius: 10px; padding: .6rem 1rem; font-size: .75rem; transition: border-color .2s, background-color .2s; }
 .bike-size.selected, .bike-size:hover { border-color: var(--orange); background: rgba(245,90,0,.1); }
 .tour-carousel { width: 100%; min-width: 0; touch-action: pan-y; }
-.carousel-stage { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.65rem, 2vw, 1rem); min-width: 0; }
+.carousel-stage { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.65rem, 2vw, 1rem); min-width: 0; overflow: hidden; }
 .carousel-card { min-width: 0; }
+.carousel-peek { position: absolute; top: 12%; width: clamp(5rem, 14vw, 10rem); height: 60%; background-position: center; background-size: cover; opacity: .28; pointer-events: none; }
+.carousel-peek-left { left: -4rem; }
+.carousel-peek-right { right: -4rem; }
 .recommendation-card h2,
 .recommendation-card p { overflow-wrap: anywhere; }
-.recommendation-card-content { display: flex; min-height: 14rem; flex-direction: column; align-items: flex-start; }
+.recommendation-card-content { display: flex; min-height: 14rem; flex-direction: column; align-items: flex-start; padding: clamp(1rem, 3vw, 2rem) 0; }
 .recommendation-card-content .recommendation-reason { margin-top: auto; }
-.carousel-arrow { display: grid; width: 2.8rem; aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 1px solid var(--ink); border-radius: 999px; font-size: 1.8rem; line-height: 1; transition: background-color .2s, color .2s; }
-.carousel-arrow:hover, .carousel-arrow:focus-visible { border-color: var(--orange); background: var(--orange); color: white; }
+.carousel-arrow { display: grid; width: 2.8rem; aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 0; font-size: 1.8rem; line-height: 1; transition: color .2s, transform .2s; }
+.carousel-arrow:hover, .carousel-arrow:focus-visible { border-color: transparent; background: transparent; color: var(--orange); transform: scale(1.15); }
 .carousel-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.25rem; }
 .carousel-dots button { width: .55rem; height: .55rem; border-radius: 999px; background: rgba(37,37,37,.25); transition: width .2s, background-color .2s; }
 .carousel-dots button.active { width: 1.6rem; background: var(--orange); }
@@ -2008,8 +2011,8 @@ button.bg-orange { border-radius: 20px !important; }
     display: grid;
   }
 
-  .md\:h-\[600px\]{
-    height: 600px;
+  .md\:h-\[760px\]{
+    height: 760px;
   }
 
   .md\:grid-cols-2{
@@ -2054,10 +2057,6 @@ button.bg-orange { border-radius: 20px !important; }
 
   .md\:p-6{
     padding: 1.5rem;
-  }
-
-  .md\:p-7{
-    padding: 1.75rem;
   }
 
   .md\:px-10{
