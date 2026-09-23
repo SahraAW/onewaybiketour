@@ -1,11 +1,8 @@
 {
-  "/booking/questions/page": "app/booking/questions/page.js",
-  "/onboarding/page": "app/onboarding/page.js",
-  "/recommendations/page": "app/recommendations/page.js",
   "/tours/[id]/page": "app/tours/[id]/page.js",
+  "/page": "app/page.js",
   "/bike-recommendations/page": "app/bike-recommendations/page.js",
   "/tours/page": "app/tours/page.js",
-  "/page": "app/page.js",
-  "/booking/date/page": "app/booking/date/page.js",
-  "/booking/[id]/page": "app/booking/[id]/page.js"
+  "/booking/bike/page": "app/booking/bike/page.js",
+  "/booking/questions/page": "app/booking/questions/page.js"
 }
