@@ -1,11 +1,3 @@
 {
-  "/page": "app/page.js",
-  "/recommendations/page": "app/recommendations/page.js",
-  "/onboarding/page": "app/onboarding/page.js",
-  "/tours/[id]/page": "app/tours/[id]/page.js",
-  "/booking/[id]/page": "app/booking/[id]/page.js",
-  "/booking/questions/page": "app/booking/questions/page.js",
-  "/booking/date/page": "app/booking/date/page.js",
-  "/booking/summary/page": "app/booking/summary/page.js",
-  "/login/page": "app/login/page.js"
+  "/page": "app/page.js"
 }

@@ -7,7 +7,7 @@ export function Footer() {
   const linkClass = "transition-colors hover:text-orange";
   const socialClass = "inline-flex h-11 w-11 items-center justify-center transition-colors hover:text-orange";
 
-  return <footer className="relative bg-paper px-5 pb-8 pt-12 text-black before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-[#aaa6a5] before:content-[''] md:px-10 md:pb-10 md:pt-14">
+  return <footer className="relative mt-12 bg-paper px-5 pb-8 pt-12 text-black before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-[#aaa6a5] before:content-[''] md:mt-16 md:px-10 md:pb-10 md:pt-14">
     <div className="mx-auto grid max-w-7xl items-center gap-6 text-xs leading-relaxed md:grid-cols-2 md:gap-8 lg:grid-cols-[1fr_auto_1fr]">
       <div className="min-w-0">
         <section className="mb-5">
