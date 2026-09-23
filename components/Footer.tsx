@@ -7,8 +7,13 @@ export function Footer() {
   const linkClass = "transition-colors hover:text-orange";
   const socialClass = "inline-flex h-11 w-11 items-center justify-center transition-colors hover:text-orange";
 
-  return <footer className="relative mt-12 bg-paper px-5 pb-8 pt-12 text-black before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-[#aaa6a5] before:content-[''] md:mt-16 md:px-10 md:pb-10 md:pt-14">
-    <div className="mx-auto grid max-w-7xl items-center gap-6 text-xs leading-relaxed md:grid-cols-2 md:gap-8 lg:grid-cols-[1fr_auto_1fr]">
+  return <footer className="relative mt-12 bg-paper px-5 pb-8 pt-12 text-black before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-[2px] before:bg-[#aaa6a5] before:content-[''] md:mt-16 md:px-10 md:pb-10 md:pt-14">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" style={{ maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 8%, black 30%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 8%, black 30%)" }} aria-hidden="true">
+      <svg viewBox="0 410 3936 1603" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full opacity-36" aria-hidden="true">
+        <image href="/images/footer-tire.png" width="3936" height="2624" />
+      </svg>
+    </div>
+    <div className="relative mx-auto grid max-w-7xl items-center gap-6 text-xs leading-relaxed md:grid-cols-2 md:gap-8 lg:grid-cols-[1fr_auto_1fr]">
       <div className="min-w-0">
         <section className="mb-5">
           <h2 className={headingClass}>Want to join the adventure?</h2>
@@ -42,5 +47,8 @@ export function Footer() {
         <span className="mt-1 block text-center text-[clamp(1.7rem,7.65vw,3.2rem)] font-bold leading-none tracking-tight">bike tours</span>
       </Link>
     </div>
+    <p className="relative mx-auto mt-6 max-w-7xl pb-3 text-center text-[10px] leading-relaxed text-black/60">
+      © {new Date().getFullYear()} One Way Bike Tours. All rights reserved.
+    </p>
   </footer>;
 }

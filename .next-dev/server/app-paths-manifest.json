@@ -1,8 +1,7 @@
 {
-  "/tours/[id]/page": "app/tours/[id]/page.js",
-  "/page": "app/page.js",
-  "/bike-recommendations/page": "app/bike-recommendations/page.js",
+  "/booking/questions/page": "app/booking/questions/page.js",
   "/tours/page": "app/tours/page.js",
   "/booking/bike/page": "app/booking/bike/page.js",
-  "/booking/questions/page": "app/booking/questions/page.js"
+  "/bike-recommendations/page": "app/bike-recommendations/page.js",
+  "/page": "app/page.js"
 }
