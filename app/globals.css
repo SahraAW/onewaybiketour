@@ -424,3 +424,46 @@ button.bg-orange { border-radius: 20px !important; }
 @media (min-width: 1025px) {
   .route-flow .route-panel { min-height: clamp(560px, 72vh, 700px); }
 }
+
+/* Keep questions close to the header and their navigation in view. */
+.route-question-flow .route-flow-content {
+  min-height: 0;
+  align-items: start;
+  padding-top: .5rem;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+.route-question-flow .route-flow-content .route-panel {
+  min-height: 0;
+  padding-top: .5rem;
+  padding-bottom: 1rem;
+}
+.route-question-flow .question-eyebrow {
+  margin-bottom: 0;
+}
+.route-question-flow .question-title {
+  margin-top: .75rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.route-question-flow .question-options {
+  margin-top: 1.25rem;
+  gap: .5rem;
+}
+.route-question-flow .route-option {
+  min-height: 48px;
+  padding: .7rem 1rem;
+  font-size: clamp(.875rem, 1.5vw, 1rem);
+  line-height: 1.4;
+}
+.route-question-flow .route-option-marker {
+  width: .875rem;
+  height: .875rem;
+  margin-right: .75rem;
+}
+.route-question-flow .route-panel .question-actions {
+  margin-top: .75rem;
+}
+.route-question-flow > .navigation-steps {
+  margin-top: .5rem;
+}

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { BookingProvider } from "@/components/BookingProvider";
 
 export const metadata: Metadata = {
@@ -8,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="da"><body><BookingProvider>{children}</BookingProvider></body></html>;
+  return <html lang="da"><body><BookingProvider><Navbar />{children}<Footer /></BookingProvider></body></html>;
 }

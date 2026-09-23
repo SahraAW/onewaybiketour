@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Logo } from "./Logo";
-import { FaqDialog } from "./FaqDialog";
+import { SkipQuestion } from "./SkipQuestion";
 import { NavigationSteps } from "./NavigationSteps";
 
 type RouteChoice = {
@@ -76,6 +75,15 @@ export function RouteOnboarding() {
   const question = questions[step];
   const isRoutes = step === questions.length;
   const chooseAnswer = (answer: string) => setAnswers((current) => ({ ...current, [step]: answer }));
+  const skipQuestion = () => {
+    setAnswers((current) => {
+      const next = { ...current };
+      delete next[step];
+      return next;
+    });
+    setCustomResponseOpen(false);
+    setStep((current) => current + 1);
+  };
   const chooseCustomResponse = () => {
     setCustomResponseOpen(true);
     chooseAnswer("");
@@ -87,11 +95,7 @@ export function RouteOnboarding() {
       router.push("/recommendations");
     }
   }, [answers, isRoutes, router, selected]);
-  return <main className="route-flow grain min-h-screen bg-[#e8e5e2]">
-    <header className="flex items-center justify-between px-5 py-6 md:px-10">
-      <Logo />
-      <FaqDialog />
-    </header>
+  return <main className={`route-flow grain min-h-screen bg-[#e8e5e2] ${!isRoutes ? "route-question-flow" : ""}`}>
     <div className={`route-flow-content mx-auto grid w-full gap-4 px-[clamp(1.25rem,6vw,7rem)] pb-8 ${!isRoutes ? "max-w-3xl" : "md:grid-cols-3"}`}>
       {!isRoutes && <section className="route-panel flex flex-col px-0 pb-7 pt-8 md:pt-16">
         <RouteMark />
@@ -113,6 +117,7 @@ export function RouteOnboarding() {
             </button>)}
           </div>
         </div>
+        <div className="mt-5 flex justify-end"><SkipQuestion onClick={skipQuestion} /></div>
         <div className="question-actions mt-8 flex flex-wrap items-center justify-between gap-4"><button type="button" className="min-h-11 text-sm font-bold text-orange" onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; Back</button><button type="button" className="min-h-11 rounded-[20px] bg-orange px-7 py-3 text-sm font-bold text-white" onClick={() => setStep(step + 1)}>Continue</button></div>
       </section>}
       {isRoutes && routeChoices.map((route, index) => <section key={route.city} className={`route-panel flex flex-col px-0 pb-7 pt-16 transition-shadow ${selected === route.city ? "route-panel-selected" : ""}`}>
