@@ -101,10 +101,16 @@ export function RouteOnboarding() {
           <div className="question-options mt-8 grid gap-3">
             {question.options.map((option) => option === "Add Your Own Response" ? (
               <div key={option}>
-                <button type="button" onClick={chooseCustomResponse} className={`route-option ${customResponseOpen ? "route-option-active" : ""}`}><span className="mr-3 inline-block h-3 w-3 rounded-full border border-ink/70" />{option}</button>
+                <button type="button" onClick={chooseCustomResponse} className={`route-option ${customResponseOpen ? "route-option-active" : ""}`}>
+                  <span className={`mr-4 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-black ${customResponseOpen ? "bg-orange" : "bg-transparent"}`} />
+                  {option}
+                </button>
                 {customResponseOpen && <input value={answers[step] ?? ""} onChange={(event) => chooseAnswer(event.target.value)} className="mt-2 w-full rounded-[10px] border border-orange bg-transparent px-4 py-3 text-sm outline-none placeholder:text-ink/45 focus:ring-2 focus:ring-orange/25" placeholder="Write your response..." aria-label="Your own response" />}
               </div>
-            ) : <button type="button" key={option} onClick={() => { setCustomResponseOpen(false); chooseAnswer(option); }} className={`route-option ${answers[step] === option ? "route-option-active" : ""}`}><span className="mr-3 inline-block h-3 w-3 rounded-full border border-ink/70" />{option}</button>)}
+            ) : <button type="button" key={option} onClick={() => { setCustomResponseOpen(false); chooseAnswer(option); }} className={`route-option ${answers[step] === option ? "route-option-active" : ""}`}>
+              <span className={`mr-4 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-black ${answers[step] === option ? "bg-orange" : "bg-transparent"}`} />
+              {option}
+            </button>)}
           </div>
         </div>
         <div className="question-actions mt-8 flex flex-wrap items-center justify-between gap-4"><button type="button" className="min-h-11 text-sm font-bold text-orange" onClick={() => step === 0 ? window.history.back() : setStep(step - 1)}>‹&nbsp; Back</button><button type="button" className="min-h-11 rounded-[20px] bg-orange px-7 py-3 text-sm font-bold text-white" onClick={() => setStep(step + 1)}>Continue</button></div>

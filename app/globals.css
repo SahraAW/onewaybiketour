@@ -5,10 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --paper: #d9d9d9;
+  --paper: #f1eee9;
+  --paper-strong: #e7e1db;
   --ink: #000000;
+  --ink-soft: rgba(0, 0, 0, 0.62);
   --orange: #f55a00;
+  --orange-soft: rgba(245, 90, 0, 0.12);
   --muted: #626262;
+  --cheap: #ffe787;
 }
 
 * { box-sizing: border-box; }
@@ -23,7 +27,7 @@ body {
 }
 html, body { overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
-button, input { font: inherit; }
+button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
 input, textarea, select { color: var(--ink); }
 input::placeholder { color: rgba(32, 32, 32, .42); }
@@ -33,8 +37,19 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   isolation: isolate;
 }
 .display { letter-spacing: -.035em; line-height: .98; }
-.eyebrow { letter-spacing: .12em; text-transform: uppercase; font-size: 10px; }
+.eyebrow {
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--orange);
+}
 .orange-line { color: var(--orange); }
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
 .navigation-steps {
   width: min(100%, 40rem);
   margin: 2rem auto 0;
@@ -97,20 +112,27 @@ input::placeholder { color: rgba(32, 32, 32, .42); }
   display: none;
 }
 .route-option {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   min-width: 0;
-  border: 1px solid rgba(32,32,32,.28);
-  border-radius: 20px;
-  padding: 14px 16px;
+  border: 1.5px solid rgba(0, 0, 0, 0.85);
+  border-radius: 999px;
+  padding: 1rem 1.25rem;
   text-align: left;
-  font-size: .875rem;
-  line-height: 1.4;
-  min-height: 54px;
+  font-size: clamp(1.15rem, 2vw, 2.2rem);
+  line-height: 1.2;
+  min-height: 64px;
   overflow-wrap: anywhere;
-  transition: background-color .2s, border-color .2s;
+  background: transparent;
+  color: var(--ink);
+  transition: border-color .2s ease, background-color .2s ease;
 }
-.route-option:hover, .route-option-active { border-color: var(--orange); background: rgba(245,90,0,.08); }
+.route-option:hover { border-color: rgba(0, 0, 0, 0.9); }
+.route-option-active {
+  border-color: rgba(0, 0, 0, 0.9);
+  background: transparent;
+}
 .route-option:focus-visible,
 .route-photo:focus-visible,
 .route-panel button:focus-visible {

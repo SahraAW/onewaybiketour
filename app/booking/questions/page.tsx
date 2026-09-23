@@ -38,14 +38,14 @@ export default function BookingQuestionsPage() {
     setStep((current) => current + 1);
   };
   return <BookingLayout step="bike">
-    <div className="booking-question-screen mx-auto w-full max-w-2xl">
+    <div className="booking-question-screen mx-auto w-full max-w-2xl rounded-[24px] bg-[#e8e5e2] p-4 md:p-6">
       <p className="eyebrow text-orange">Personal questions / Question {step + 1} of {questions.length}</p>
-      <h1 className="mt-5 max-w-xl text-3xl font-semibold leading-tight md:text-5xl">{question.title}</h1>
-      <div className="mt-8 grid gap-3">{question.options.map((option) => option === "Add Your Own Response" ? <div key={option}><BookingOption title={option} selected={customResponseOpen} onClick={chooseCustomResponse} />{customResponseOpen && <input value={answer ?? ""} onChange={(event) => choose(event.target.value)} className="mt-2 min-h-11 w-full rounded-[10px] border border-orange bg-transparent px-4 py-3 text-sm outline-none placeholder:text-ink/45 focus:ring-2 focus:ring-orange/25" placeholder="Write your response..." aria-label="Your own tour duration" />}</div> : <BookingOption key={option} title={option} selected={answer === option} onClick={() => { setCustomResponseOpen(false); choose(option); }} />)}</div>
+      <h1 className="mt-5 max-w-xl text-3xl font-semibold leading-tight text-black md:text-5xl">{question.title}</h1>
+      <div className="mt-8 grid gap-3">{question.options.map((option) => option === "Add Your Own Response" ? <div key={option}><BookingOption title={option} selected={customResponseOpen} onClick={chooseCustomResponse} />{customResponseOpen && <input value={answer ?? ""} onChange={(event) => choose(event.target.value)} className="mt-2 min-h-11 w-full rounded-[10px] border border-orange bg-transparent px-4 py-3 text-sm text-black outline-none placeholder:text-ink/45" placeholder="Write your response..." aria-label="Your own tour duration" />}</div> : <BookingOption key={option} title={option} selected={answer === option} onClick={() => { setCustomResponseOpen(false); choose(option); }} />)}</div>
       {showError && <p role="alert" className="mt-4 text-sm font-bold text-orange">Please choose an answer before continuing.</p>}
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
         <button type="button" onClick={() => step === 0 ? router.push("/booking/date") : setStep((current) => current - 1)} className="min-h-11 text-sm font-bold text-orange">‹&nbsp; Back</button>
-        <button type="button" onClick={continueQuestion} className="min-h-11 rounded-full bg-orange px-7 py-3 text-sm font-bold text-white">{step === questions.length - 1 ? "See my bikes ↗" : "Continue"}</button>
+        <button type="button" onClick={continueQuestion} className="min-h-11 rounded-[20px] bg-orange px-7 py-3 text-sm font-bold text-white">{step === questions.length - 1 ? "See my bikes ↗" : "Continue"}</button>
       </div>
       <Link href="/booking/date" className="mt-8 inline-block text-xs font-bold text-ink/50">Change date</Link>
     </div>
