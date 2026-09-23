@@ -1,7 +1,7 @@
 {
-  "/recommendations/page": "app/recommendations/page.js",
-  "/page": "app/page.js",
-  "/onboarding/page": "app/onboarding/page.js",
+  "/booking/questions/page": "app/booking/questions/page.js",
+  "/tours/page": "app/tours/page.js",
   "/booking/bike/page": "app/booking/bike/page.js",
-  "/bike/[id]/page": "app/bike/[id]/page.js"
+  "/bike-recommendations/page": "app/bike-recommendations/page.js",
+  "/page": "app/page.js"
 }

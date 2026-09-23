@@ -64,7 +64,7 @@ export default function BikeDetailPage() {
           <Link
             href="/booking/extras"
             onClick={(event) => { if (!selectedSize) { event.preventDefault(); setShowError(true); } }}
-            className={`mt-8 inline-flex rounded-full px-7 py-3 text-[11px] font-bold text-white transition-opacity ${selectedSize ? "bg-orange" : "bg-orange/50"}`}
+            className="mt-8 flex min-h-11 w-fit items-center justify-start py-3 text-left text-[11px] font-bold text-black transition-colors hover:text-orange focus-visible:text-orange"
           >
             Continue to extras ↗
           </Link>
